@@ -35,10 +35,10 @@ public class CardGame02 {
 			System.out.println("player2은 원페어가 아닙니다");
 		}
 		
+		p1.flush();
+		p1.showCards();
+		
 	
 	}
 
 }
-//투페어: 2쌍의 페어,원페어가 2개 존재 
-//스트레이트: 숫자가 이어지는 카드 5장 5,4,3,2,A는 낮은 스트레이트 A,K,Q,J,10은 높은 스트레이트...?
-//플러쉬: 무늬가 같은 카드 5장 

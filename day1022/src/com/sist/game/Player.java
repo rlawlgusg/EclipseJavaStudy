@@ -30,7 +30,7 @@ public class Player {
 		for(int i=0;i<number.length;i++) {
 			map.put(number[i], value++);//map에 key는 카드의 숫자로, value는 2부터 1씩증가한 값
 		}
-		
+		int pair = 0;
 		int n = 0;
 		for(int i=0;i<list.size();i++) {
 			for(int j=i+1;j<list.size();j++) {
@@ -39,11 +39,33 @@ public class Player {
 					//동일한 카드의 숫자(문자열)에 해당하는 정수를 맵으로부터 뽑아옴 
 					n = map.get(list.get(i).getNumber());
 					return n;
-				
+						
 				}
 			}
 		}
 		return n;
+		
+	}
+	
+	public String flush() {
+		int flush =0;
+		String s = "";
+		for(int i=0;i<list.size();i++) {
+			for(int j=i;j<list.size()-1;j++) {
+				if(list.get(i).getSuit()==(list.get(j+1).getSuit())) { 
+					//if(suit[0]==suit[1] && suit[1]==suit[2] &&
+					 // suit[2] == suit[3] && suit[3]==suit[4])
+					flush++;
+					
+					if(flush == 5) {
+					s = list.get(i).getSuit();//5개부터야 되는데 왜 4개부터 나오지?
+					return s;
+					}
+				}
+			}
+		}
+		return s;
+		
 		
 	}
 	
@@ -56,3 +78,7 @@ public class Player {
 
 
 }
+
+//투페어: 2쌍의 페어,원페어가 2개 존재 
+//스트레이트: 숫자가 이어지는 카드 5장 5,4,3,2,A는 낮은 스트레이트 A,K,Q,J,10은 높은 스트레이트...?
+//플러쉬: 무늬가 같은 카드 5장 

@@ -23,11 +23,13 @@ public class ArrayListDoubleTest {
 			System.out.printf("%.1f\t",list.get(i));
 		}
 		System.out.println();
+		
 		//2번 for-each 구문을 사용
 		for(double n :list) {
 			System.out.printf("%.1f\t",n);
 		}
 		System.out.println();
+		
 		//3번 Iterator 반복자 >>>>>>>다시 공부
 		Iterator<Double> iter = list.iterator();
 		while(iter.hasNext()) { //iter.hashNext 있으면 true, 없으면 false>while문 탈출
