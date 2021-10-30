@@ -26,7 +26,6 @@ public class SistNote extends JFrame implements ActionListener{
 	
 	//저장할 파일이름과 열어올 파일이름을 선택하기 위한 JFileChooser를 멤버변수로 선언
 	JFileChooser jfc;
-	
 	//생성자에서 JTextArea객체를 생성하여 프레임에 담음 
 	public SistNote() {
 		jta = new JTextArea();
@@ -41,7 +40,7 @@ public class SistNote extends JFrame implements ActionListener{
 		//스크롤을 자동으로 만들어 주는 JScrollPane으로 감싸서 프레임에 담아야함
 		
 		JScrollPane jsp = new JScrollPane(jta);
-		add(jsp);
+		this.add(jsp);
 		
 		JMenuBar jmb = new JMenuBar();
 		JMenu file = new JMenu("파일");
