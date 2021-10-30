@@ -1,4 +1,4 @@
-package com.sist.file.draw;
+package com.sist.draw;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;

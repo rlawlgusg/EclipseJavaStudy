@@ -1,4 +1,4 @@
-package com.sist.file.note02;
+package com.sist.note02;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;

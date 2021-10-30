@@ -1,4 +1,4 @@
-package com.sist.file.draw;
+package com.sist.draw;
 
 public class MyFrameTest {
 

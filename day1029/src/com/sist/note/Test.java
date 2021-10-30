@@ -1,4 +1,4 @@
-package com.sist.file.note;
+package com.sist.note;
 
 public class Test {
 

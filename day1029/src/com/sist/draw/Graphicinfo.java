@@ -1,4 +1,4 @@
-package com.sist.file.draw;
+package com.sist.draw;
 
 import java.awt.Color;
 import java.io.Serializable;
