@@ -15,11 +15,12 @@ import javax.swing.JTextField;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
+import java.awt.event.MouseListener;
 public class MemberTestDB extends JFrame {
 	JTextField jtf_no;
 	JTextField jtf_name;
@@ -29,17 +30,21 @@ public class MemberTestDB extends JFrame {
 	JTable table; 
 	Vector colNames; 
 	Vector<Vector> rowData;
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String id = "c##sist";
+	String pw = "sist";
+	
+	Connection conn = null;
+	Statement stmt = null;
+	
 	public MemberTestDB() {
-		
 		jtf_no = new JTextField();
 		jtf_name = new JTextField();
 		jtf_addr = new JTextField();
 		jtf_age = new JTextField();
 		jtf_phone = new JTextField();
-		
 		JPanel p = new JPanel();
 		JPanel p2 = new JPanel();
-		
 		p.setLayout(new GridLayout(5,2));
 		p.add(new JLabel("회원번호:"));
 		p.add(jtf_no);
@@ -51,42 +56,32 @@ public class MemberTestDB extends JFrame {
 		p.add(jtf_age);
 		p.add(new JLabel("전화번호:"));
 		p.add(jtf_phone);
-	
 		JButton btn_add = new JButton("추가");
 		JButton btn_list = new JButton("목록");
 		JButton btn_update = new JButton("수정");
 		JButton btn_delete = new JButton("삭제");
-		
 		p2.add(btn_add);
 		p2.add(btn_list);
 		p2.add(btn_update);
 		p2.add(btn_delete);
-
 		JPanel p_center = new JPanel();
 		p_center.setLayout(new BorderLayout());
 		p_center.add(p,BorderLayout.CENTER);
 		p_center.add(p2,BorderLayout.SOUTH);
-		
 		colNames = new Vector<>();
 		colNames.add("회원번호");
 		colNames.add("회원이름");
 		colNames.add("회원주소");
 		colNames.add("회원나이");
 		colNames.add("전화번호");
-		
 		rowData = new Vector<Vector>();
-	
 		table = new JTable(rowData, colNames);
 		JScrollPane jsp = new JScrollPane(table);
-		
 		add(p_center,BorderLayout.CENTER);
 		add(jsp,BorderLayout.SOUTH);
-		
 		setSize(800,600);
 		setVisible(true);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
 		btn_add.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -100,7 +95,6 @@ public class MemberTestDB extends JFrame {
 				insertMember(no, name, addr, age, phone);
 			}
 		});
-		
 		btn_list.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -108,18 +102,59 @@ public class MemberTestDB extends JFrame {
 				printMember();
 			}
 		});
-	
-	
-	}
+		btn_update.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int no = Integer.parseInt(jtf_no.getText());
+				String name = jtf_name.getText();
+				String addr = jtf_addr.getText();
+				int age = Integer.parseInt(jtf_age.getText());
+				String phone = jtf_phone.getText();
+				updateMember(no,name,addr,age,phone);
+			}
+		});
+		
+		table.addMouseListener(new MouseListener() {
 
-	
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				int index = table.getSelectedRow();
+				Vector v = rowData.get(index);
+				jtf_no.setText(v.get(0)+"");
+				jtf_name.setText(v.get(1)+"");
+				jtf_addr.setText(v.get(2)+"");
+				jtf_age.setText(v.get(3)+"");
+				jtf_phone.setText(v.get(4)+"");				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+			}
+		});
+	}
 	public void insertMember(int no, String name, String addr, int age, String phone) {
-		String sql = "insert into Member values("+no+",'"+name+"','"+addr+"',"+age+",'"+phone+"')";
-		Connection conn = null;
-		Statement stmt = null;
+		String sql = "insert into Member values("+no+",'"+name+"','"+addr+"',"+age+",'"+phone+"')";		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
+			conn = DriverManager.getConnection(url, id, pw);
 			stmt = conn.createStatement();
 			int re = stmt.executeUpdate(sql);
 			if(re == 1) {
@@ -146,8 +181,6 @@ public class MemberTestDB extends JFrame {
 	public void printMember() {
 		rowData.clear();
 		String sql = "select * from member order by no";
-		Connection conn = null;
-		Statement stmt = null;
 		ResultSet rs = null;
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -168,8 +201,7 @@ public class MemberTestDB extends JFrame {
 					v.add(phone);
 					rowData.add(v);
 					table.updateUI();
-				}
-				
+				}			
 			}catch(Exception e) {
 				System.out.println("예외발생:"+e.getMessage());
 			}finally {
@@ -184,6 +216,37 @@ public class MemberTestDB extends JFrame {
 					System.out.println("예외발생:"+e.getMessage());
 				}
 			}
+		}
+	
+	public void updateMember(int no,String name, String addr, int age, String phone) {
+		String sql = "update member set name='"+name+"'addr='"+addr+"age="+age+"phone='"+phone+"'Where no="+no;
+		//명령어 문법오류 못찾겠다
+		
+		try {
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		conn = DriverManager.getConnection(url, id, pw);
+		stmt = conn.createStatement();
+		
+		int re = stmt.executeUpdate(sql);
+		if(re == 1) {
+			System.out.println("회원정보가 변경됐다~~~~");
+		}else {
+			System.out.println("회원정보가 변경되지 않음");
+		}
+		
+		}catch(Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}finally {
+			try {
+			if(stmt != null) {
+				stmt.close();
+			}
+			if(conn != null) {
+				conn.close();
+			}
+			}catch(Exception e) {}
+		}
+		
 	}
 
 	

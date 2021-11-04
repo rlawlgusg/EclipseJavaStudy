@@ -40,7 +40,8 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			//1.jdbc드라이버를 메모리로 로드함
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			//2.db서버에 연결함
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");			//3.statement 객체를 생성
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");		
+			//3.statement 객체를 생성
 			//4.데이터베이스명령을 실행함
 			stmt = conn.createStatement();
 			
