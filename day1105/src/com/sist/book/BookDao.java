@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class BookDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##sist";
-	String pwd = "sist";
+	String user = "*****";
+	String pwd = "****";
 	
 	public int updateBook(BookVo m) {
 		int re = -1;
@@ -29,7 +29,7 @@ public class BookDao {
 			
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -61,7 +61,7 @@ public class BookDao {
 	         re = pstmt.executeUpdate();   
 	         
 	      }catch(Exception e) {
-	         System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+	         System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 	      }finally{
 	         try {
 	            if(pstmt != null) {
@@ -99,7 +99,7 @@ public class BookDao {
 	         }
 	         
 	      }catch (Exception e) {
-	         System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+	         System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 	      }finally {
 	         try{
 	            if(rs != null) {
@@ -136,7 +136,7 @@ public class BookDao {
 	         
 	         re= pstmt.executeUpdate();
 	         if(re==1) {
-	            System.out.println("¼º°øÇÏ¿´½À´Ï´Ù.");
+	            System.out.println("ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.");
 	         }
 	         
 	      } catch (Exception e) {
