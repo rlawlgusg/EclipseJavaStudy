@@ -15,7 +15,7 @@ public class GoodsDao {
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");		
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "*****", "*****");		
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, item); 
 				pstmt.setInt(2, qty); 
@@ -24,13 +24,13 @@ public class GoodsDao {
 
 				int re = pstmt.executeUpdate(); 
 				if(re == 1) {
-					System.out.println("»óÇ°¼öÁ¤¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+					System.out.println("ìƒí’ˆìˆ˜ì •ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				}else {
-					System.out.println("»óÇ°¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+					System.out.println("ìƒí’ˆìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 				}
 				
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(pstmt != null) {
@@ -60,9 +60,9 @@ public class GoodsDao {
 				
 				int re = pstmt.executeUpdate();
 				if(re == 1) {
-					System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+					System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				}else {
-					System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+					System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 				}
 			}catch(Exception ex) {
 				System.out.println(ex.getMessage());
@@ -88,12 +88,12 @@ public class GoodsDao {
 				pstmt.setInt(1, no);
 				int re = pstmt.executeUpdate();
 				if(re == 1) {
-					System.out.println("»óÇ°À» »èÁ¦ÇÏ¿´½À´Ï´Ù");
+					System.out.println("ìƒí’ˆì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤");
 				}else {
-					System.out.println("»èÁ¦¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+					System.out.println("ì‚­ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(pstmt != null) {
