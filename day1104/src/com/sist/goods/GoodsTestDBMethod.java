@@ -25,79 +25,79 @@ public class GoodsTestDBMethod extends JFrame {
 	JTextField jtf_qty;
 	JTextField jtf_price;
 	
-	JTable table; //¸ðµç »óÇ° ¸ñ·ÏÀ» ¿¢¼¿°ú °°Àº ¸ð¾çÀ¸·Î º¸¿©ÁÖ±â À§ÇÑ Å×ÀÌºíÀ» ¼±¾ð
-	Vector colNames; //Å×ÀÌºíÀÇ Ä®·³ÀÌ¸§À» À§ÇÑ º¤ÅÍ¸¦ ¼±¾ð
-	Vector<Vector> rowData; //Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ À§ÇÑ º¤ÅÍ¸¦ ¼±¾ð
+	JTable table; //ëª¨ë“  ìƒí’ˆ ëª©ë¡ì„ ì—‘ì…€ê³¼ ê°™ì€ ëª¨ì–‘ìœ¼ë¡œ ë³´ì—¬ì£¼ê¸° ìœ„í•œ í…Œì´ë¸”ì„ ì„ ì–¸
+	Vector colNames; //í…Œì´ë¸”ì˜ ì¹¼ëŸ¼ì´ë¦„ì„ ìœ„í•œ ë²¡í„°ë¥¼ ì„ ì–¸
+	Vector<Vector> rowData; //í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ìœ„í•œ ë²¡í„°ë¥¼ ì„ ì–¸
 	
-	//µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÏ¿© goodsÅ×ÀÌºíÀÇ ¸ðµç »óÇ°À» ÀÐ¾î¿Í¼­(°Ë»öÇÏ¿©, Á¶È¸ÇÏ¿©)
-	//Å×ÀÌºí¿¡ Ãâ·ÂÇÏ´Â ¸Þ¼Òµå¸¦ Á¤ÀÇ
+	//ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•˜ì—¬ goodsí…Œì´ë¸”ì˜ ëª¨ë“  ìƒí’ˆì„ ì½ì–´ì™€ì„œ(ê²€ìƒ‰í•˜ì—¬, ì¡°íšŒí•˜ì—¬)
+	//í…Œì´ë¸”ì— ì¶œë ¥í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	
 	public void printGoods(){
 		
-		//»õ·Î¿î »óÇ°À» µî·ÏÇÏ¸é °è¼ÓÇÏ¿© È£ÃâµÉ ¼ö ÀÖÀ¸´Ï
-		//rowData¸¦ ¸ÕÀú ±ú²ýÈ÷ ºñ¿öÁÜ 
+		//ìƒˆë¡œìš´ ìƒí’ˆì„ ë“±ë¡í•˜ë©´ ê³„ì†í•˜ì—¬ í˜¸ì¶œë  ìˆ˜ ìžˆìœ¼ë‹ˆ
+		//rowDataë¥¼ ë¨¼ì € ê¹¨ë—ížˆ ë¹„ì›Œì¤Œ 
 		rowData.clear();
 		
-		//µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÏ¿© ½ÇÇàÇÒ ¸í·É¾î
+		//ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•˜ì—¬ ì‹¤í–‰í•  ëª…ë ¹ì–´
 		String sql = "select * from goods Order by no";
 		
-		//µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á°ú ÇÊ¿äÇÑ º¯¼öµéÀ» ¼±¾ð
-		Connection conn = null; //DB¼­¹ö¿¡ ¿¬°áÀ» À§ÇÑ º¯¼ö
-		Statement stmt = null;  //µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇàÇÏ±â À§ÇÑ º¯¼ö
-		ResultSet rs = null;  //ÀÐ¾î¿Â µ¥ÀÌÅÍ¸¦ ´ã±âÀ§ÇÑ º¯¼ö
+		//ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²°ê³¼ í•„ìš”í•œ ë³€ìˆ˜ë“¤ì„ ì„ ì–¸
+		Connection conn = null; //DBì„œë²„ì— ì—°ê²°ì„ ìœ„í•œ ë³€ìˆ˜
+		Statement stmt = null;  //ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+		ResultSet rs = null;  //ì½ì–´ì˜¨ ë°ì´í„°ë¥¼ ë‹´ê¸°ìœ„í•œ ë³€ìˆ˜
 		try {
-			//1. jdbcµå¶óÀÌ¹ö¸¦ ¸Þ¸ð¸®·Î ·ÎµåÇÔ
+			//1. jdbcë“œë¼ì´ë²„ë¥¼ ë©”ëª¨ë¦¬ë¡œ ë¡œë“œí•¨
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			//2. db¼­¹ö¿¡ ¿¬°áÇÔ
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
-			//3.statement°´Ã¼¸¦ »ý¼º
+			//2. dbì„œë²„ì— ì—°ê²°í•¨
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "*****", "*****");
+			//3.statementê°ì²´ë¥¼ ìƒì„±
 			stmt = conn.createStatement();
-			//4.µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇàÇÔ
-			//»ç¿ëÇÏ´Â ¸Þ¼Òµå µÎ°¡Áö
-			//int re = executeUpdate(String sql) : ÀÚ·á¸¦ Ãß°¡,¼öÁ¤,»èÁ¦
-			//ResultSet rs = executeQuery(String sql) : ÀÚ·á¸¦ ÀÐ¾î¿Ã¶§
+			//4.ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰í•¨
+			//ì‚¬ìš©í•˜ëŠ” ë©”ì†Œë“œ ë‘ê°€ì§€
+			//int re = executeUpdate(String sql) : ìžë£Œë¥¼ ì¶”ê°€,ìˆ˜ì •,ì‚­ì œ
+			//ResultSet rs = executeQuery(String sql) : ìžë£Œë¥¼ ì½ì–´ì˜¬ë•Œ
 			rs = stmt.executeQuery(sql);
-			//5.ÀÏÃ³¸®¸¦ ÇÑ´Ù
-			//°Ë»öÇÑ ÀÚ·á°¡ ÀÖ´Â ¸¸Å­ ¹Ýº¹½ÇÇàÇÏ¿© ÇÑ Çà¾¿ ÀÐ¾î¿Í¼­ ±×°ÍÀ» º¤ÅÍ·Î ¸¸µé¾î
-			//±× º¤ÅÍ¸¦ Å×ÀÌºíÀÇ ÀÚ·á¸¦ À§ÇÑ rowData¿¡ ´ãÀ½ 
-			//ResultSetÀÇ °á°ú¿¡¼­ Æ¯Á¤ ·¹ÄÚµå¸¦ °¡¸®Å°´Â Ä¿¼­°¡ ÀÖÀ½
-			//ÀÌ Ä¿¼­¸¦ ÇÑ Çà¾¿ ¿Å°ÜÁÖ´Â ¸Þ¼Òµå°¡ next()
-			//ÀÌ ¸Þ¼Òµå´Â ´ÙÀ½¿¡ ·¹ÄÚµå°¡ ÀÖ¾î¼­ ¼º°øÀûÀ¸·Î ¿Å°ÜÁö¸é true¸¦ ¹ÝÈ¯ÇÏ°í
-			//´ÙÀ½¿¡ ·¹ÄÚµå°¡ ´õÀÌ»ó ¾ø¾î¼­ ¿Å°ÜÁöÁö ¾ÊÀ¸¸é false¸¦ ¹ÝÈ¯
-			//±×·¡¼­ º¸Åë ResultSet¿¡ °á°ú¸¦ ¸ðµÎ ÀÐ¾î¼­ Ã³¸®ÇÏ·Á¸é ´ÙÀ½°ú °°ÀÌ 
-			//while¹®À» ÀÌ¿ëÇÔ 
+			//5.ì¼ì²˜ë¦¬ë¥¼ í•œë‹¤
+			//ê²€ìƒ‰í•œ ìžë£Œê°€ ìžˆëŠ” ë§Œí¼ ë°˜ë³µì‹¤í–‰í•˜ì—¬ í•œ í–‰ì”© ì½ì–´ì™€ì„œ ê·¸ê²ƒì„ ë²¡í„°ë¡œ ë§Œë“¤ì–´
+			//ê·¸ ë²¡í„°ë¥¼ í…Œì´ë¸”ì˜ ìžë£Œë¥¼ ìœ„í•œ rowDataì— ë‹´ìŒ 
+			//ResultSetì˜ ê²°ê³¼ì—ì„œ íŠ¹ì • ë ˆì½”ë“œë¥¼ ê°€ë¦¬í‚¤ëŠ” ì»¤ì„œê°€ ìžˆìŒ
+			//ì´ ì»¤ì„œë¥¼ í•œ í–‰ì”© ì˜®ê²¨ì£¼ëŠ” ë©”ì†Œë“œê°€ next()
+			//ì´ ë©”ì†Œë“œëŠ” ë‹¤ìŒì— ë ˆì½”ë“œê°€ ìžˆì–´ì„œ ì„±ê³µì ìœ¼ë¡œ ì˜®ê²¨ì§€ë©´ trueë¥¼ ë°˜í™˜í•˜ê³ 
+			//ë‹¤ìŒì— ë ˆì½”ë“œê°€ ë”ì´ìƒ ì—†ì–´ì„œ ì˜®ê²¨ì§€ì§€ ì•Šìœ¼ë©´ falseë¥¼ ë°˜í™˜
+			//ê·¸ëž˜ì„œ ë³´í†µ ResultSetì— ê²°ê³¼ë¥¼ ëª¨ë‘ ì½ì–´ì„œ ì²˜ë¦¬í•˜ë ¤ë©´ ë‹¤ìŒê³¼ ê°™ì´ 
+			//whileë¬¸ì„ ì´ìš©í•¨ 
 			while(rs.next()) {
-				//ÇöÀç Ä¿¼­°¡ ¹Ù¶óº¸°í ÀÖ´Â ·¹ÄÚµåÀÇ ¼Ó¼º°ªÀ» ÀÐ¾î¿À±â À§ÇØ¼­´Â ÀÚ·áÇü¿¡ µû¶ó
-				//get~()À» »ç¿ëÇÔ
-				//Ä®·³ÀÇ °ªÀÌ ¹®ÀÚ¿­ÀÌ¶ó¸é getString()À» ÀÌ¿ëÇÏ°í 
-				//Ä®·³ÀÇ °ªÀÌ Á¤¼ö¶ó¸é getInt()¸¦ »ç¿ë
-				//ÀÌ¶§ ¸Å°³º¯¼ö·Î ÄÃ·³ÀÇ ÀÎµ¦½º³ª ÄÃ·³ÀÇ ÀÌ¸§À» ¹®ÀÚ¿­·Î Àü´Þ
-				//¿©±â¼­ ÀÎµ¦½º´Â 1ºÎÅÍ ½ÃÀÛ 
+				//í˜„ìž¬ ì»¤ì„œê°€ ë°”ë¼ë³´ê³  ìžˆëŠ” ë ˆì½”ë“œì˜ ì†ì„±ê°’ì„ ì½ì–´ì˜¤ê¸° ìœ„í•´ì„œëŠ” ìžë£Œí˜•ì— ë”°ë¼
+				//get~()ì„ ì‚¬ìš©í•¨
+				//ì¹¼ëŸ¼ì˜ ê°’ì´ ë¬¸ìžì—´ì´ë¼ë©´ getString()ì„ ì´ìš©í•˜ê³  
+				//ì¹¼ëŸ¼ì˜ ê°’ì´ ì •ìˆ˜ë¼ë©´ getInt()ë¥¼ ì‚¬ìš©
+				//ì´ë•Œ ë§¤ê°œë³€ìˆ˜ë¡œ ì»¬ëŸ¼ì˜ ì¸ë±ìŠ¤ë‚˜ ì»¬ëŸ¼ì˜ ì´ë¦„ì„ ë¬¸ìžì—´ë¡œ ì „ë‹¬
+				//ì—¬ê¸°ì„œ ì¸ë±ìŠ¤ëŠ” 1ë¶€í„° ì‹œìž‘ 
 				
 				int no = rs.getInt(1);
 				String item = rs.getString(2);
 				int qty = rs.getInt(3);
 				int price = rs.getInt(4);
 				
-				//º¤ÅÍ¸¦ ÇÏ³ª ¸¸µé°í ±× º¤ÅÍ¿¡ no,item,qty,price¸¦ ´ãÀ½
+				//ë²¡í„°ë¥¼ í•˜ë‚˜ ë§Œë“¤ê³  ê·¸ ë²¡í„°ì— no,item,qty,priceë¥¼ ë‹´ìŒ
 				Vector v = new Vector();
 				v.add(no);
 				v.add(item);
 				v.add(qty);
 				v.add(price);
-				//±× º¤ÅÍ¸¦ rowData¿¡ ´ãÀ½
+				//ê·¸ ë²¡í„°ë¥¼ rowDataì— ë‹´ìŒ
 				rowData.add(v);
-				//¹Ù²ï³»¿ëÀ¸·Î Å×ÀÌºíÀ» ´Ù½Ã ±×¸²
-				//Ã³À½ Å×ÀÌºíÀ» ¸¸µé¶§¿¡´Â rowDataº¤ÅÍ°¡ ºñ¾îÀÖÀ½
-				//³ªÁß¿¡ Å×ÀÌºíÀÇ µ¥ÀÌÅÍÀÎ rowData¿¡ ¹Ù²ï ÀÚ·á¸¦ Àû¿ëÇÏ±â À§ÇØ¼­´Â
-				//updateUI¸¦ È£ÃâÇØ¾ßÇÔ
+				//ë°”ë€ë‚´ìš©ìœ¼ë¡œ í…Œì´ë¸”ì„ ë‹¤ì‹œ ê·¸ë¦¼
+				//ì²˜ìŒ í…Œì´ë¸”ì„ ë§Œë“¤ë•Œì—ëŠ” rowDataë²¡í„°ê°€ ë¹„ì–´ìžˆìŒ
+				//ë‚˜ì¤‘ì— í…Œì´ë¸”ì˜ ë°ì´í„°ì¸ rowDataì— ë°”ë€ ìžë£Œë¥¼ ì ìš©í•˜ê¸° ìœ„í•´ì„œëŠ”
+				//updateUIë¥¼ í˜¸ì¶œí•´ì•¼í•¨
 				table.updateUI();
 			}	
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
-				//»ç¿ëÇß´ø ÀÚ¿øµéÀ» ´Ý¾ÆÁÜ
+				//ì‚¬ìš©í–ˆë˜ ìžì›ë“¤ì„ ë‹«ì•„ì¤Œ
 				if(rs != null) {
 					rs.close();
 				}
@@ -113,43 +113,43 @@ public class GoodsTestDBMethod extends JFrame {
 	}
 	
 	public void insertGoods(int no,String item,int qty,int price) {
-		//µ¥ÀÌÅÍº£ÀÌ½º insert¸¦ ¼öÇàÇÏ´Â ¸Þ¼Òµå¸¦ ¸¸µé°í È£ÃâÇÏµµ·Ï ¼öÁ¤ 
+		//ë°ì´í„°ë² ì´ìŠ¤ insertë¥¼ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œë¥¼ ë§Œë“¤ê³  í˜¸ì¶œí•˜ë„ë¡ ìˆ˜ì • 
 		
 		
 		String sql = "insert into goods values("+no+",'"+item+"',"+qty+","+price+")";
 		
-		//finally¿¡¼­µµ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï Connection°ú Statement
-		//º¯¼ö¸¦ try¹® ¹Ù±ù¿¡ ¼±¾ð 
+		//finallyì—ì„œë„ ì ‘ê·¼í•  ìˆ˜ ìžˆë„ë¡ Connectionê³¼ Statement
+		//ë³€ìˆ˜ë¥¼ tryë¬¸ ë°”ê¹¥ì— ì„ ì–¸ 
 		Connection conn = null;
 		Statement stmt = null;
 		
 		try {
-			//1. jdbcµå¶óÀÌ¹ö¸¦ ¸Þ¸ð¸®·Î ·ÎµåÇÔ
+			//1. jdbcë“œë¼ì´ë²„ë¥¼ ë©”ëª¨ë¦¬ë¡œ ë¡œë“œí•¨
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			//2. DB¼­¹ö¿¡ ¿¬°á
+			//2. DBì„œë²„ì— ì—°ê²°
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
-			//3. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ÀÖ´Â Statement °´Ã¼¸¦ »ý¼ºÇÔ 
+			//3. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ìžˆëŠ” Statement ê°ì²´ë¥¼ ìƒì„±í•¨ 
 			stmt = conn.createStatement();
-			//4. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇà
+			//4. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰
 			int re = stmt.executeUpdate(sql);
 			if(re == 1) {
-				System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				jtf_no.setText("");
 				jtf_item.setText("");
 				jtf_qty.setText("");
 				jtf_price.setText("");
 				
-				//»óÇ°µî·ÏÀ» ¼º°øÇÏ¸é Å×ÀÌºíÀÇ ³»¿ëÀ» ´Ù½Ã ÀÐ¾î¿Àµµ·Ï ¸Þ¼Òµå¸¦ È£ÃâÇÔ
+				//ìƒí’ˆë“±ë¡ì„ ì„±ê³µí•˜ë©´ í…Œì´ë¸”ì˜ ë‚´ìš©ì„ ë‹¤ì‹œ ì½ì–´ì˜¤ë„ë¡ ë©”ì†Œë“œë¥¼ í˜¸ì¶œí•¨
 				printGoods();
 				
 			}else {
-				System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆÐÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
 		}finally {
 			try {
-				//5. »ç¿ëÇß´ø ÀÚ¿øµéÀ» ´Ý¾ÆÁÜ 			
+				//5. ì‚¬ìš©í–ˆë˜ ìžì›ë“¤ì„ ë‹«ì•„ì¤Œ 			
 				if(stmt != null) {
 				stmt.close();
 				}
@@ -163,63 +163,63 @@ public class GoodsTestDBMethod extends JFrame {
 	
 	public GoodsTestDBMethod() {
 		
-		//Å×ÀÌºí¿¡ µé¾î°¥ Ä®·³ÀÌ¸§À» À§ÇÑ º¤ÅÍ¸¦ »ý¼ºÇÏ°í ÀÚ·á¸¦ Ãß°¡
+		//í…Œì´ë¸”ì— ë“¤ì–´ê°ˆ ì¹¼ëŸ¼ì´ë¦„ì„ ìœ„í•œ ë²¡í„°ë¥¼ ìƒì„±í•˜ê³  ìžë£Œë¥¼ ì¶”ê°€
 		colNames = new Vector<>();
-		colNames.add("»óÇ°¹øÈ£");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("´Ü°¡");
+		colNames.add("ìƒí’ˆë²ˆí˜¸");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ë‹¨ê°€");
 		
-		//Å×ÀÌºí¿¡ µé¾î°¥ ½ÇÁ¦ µ¥ÀÌÅÍµéÀ» ´ã±â À§ÇÑ º¤ÅÍ¸¦ »ý¼ºÇÏ°í ÀÚ·á¸¦ Ãß°¡
+		//í…Œì´ë¸”ì— ë“¤ì–´ê°ˆ ì‹¤ì œ ë°ì´í„°ë“¤ì„ ë‹´ê¸° ìœ„í•œ ë²¡í„°ë¥¼ ìƒì„±í•˜ê³  ìžë£Œë¥¼ ì¶”ê°€
 		rowData = new Vector<Vector>();
 		
-		//ÄÃ·³ÀÌ¸§ÀÌ ÀÖ´Â colNamesº¤ÅÍ¿Í ½ÇÁ¦µ¥ÀÌÅÍ°¡ ÀÖ´Â rowDataº¤ÅÍ¸¦ °®°í 
-		//¿¢¼¿°ú °°Àº È­¸éÀÇ Å×ÀÌºíÀ» »ý¼º
+		//ì»¬ëŸ¼ì´ë¦„ì´ ìžˆëŠ” colNamesë²¡í„°ì™€ ì‹¤ì œë°ì´í„°ê°€ ìžˆëŠ” rowDataë²¡í„°ë¥¼ ê°–ê³  
+		//ì—‘ì…€ê³¼ ê°™ì€ í™”ë©´ì˜ í…Œì´ë¸”ì„ ìƒì„±
 		table = new JTable(rowData, colNames);
 		
-		//Å×ÀÌºíÀÇ ÀÚ·á°¡ ³Ê¹« ¸¹¾Æ¼­ ÇÑ È­¸é¿¡ º¸ÀÌÁö ¾ÊÀ»¶§¿¡ ÀÚµ¿À¸·Î ½ºÅ©·ÑÀ» ¸¸µé¾îÁÖ´Â
-		//½ºÅ©·ÑÆÒÀ» »ý¼º
+		//í…Œì´ë¸”ì˜ ìžë£Œê°€ ë„ˆë¬´ ë§Žì•„ì„œ í•œ í™”ë©´ì— ë³´ì´ì§€ ì•Šì„ë•Œì— ìžë™ìœ¼ë¡œ ìŠ¤í¬ë¡¤ì„ ë§Œë“¤ì–´ì£¼ëŠ”
+		//ìŠ¤í¬ë¡¤íŒ¬ì„ ìƒì„±
 		JScrollPane jsp = new JScrollPane(table);
 		
-		jtf_no = new JTextField(); //»óÇ°¹øÈ£¸¦ ÀÔ·Â¹Þ±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_item = new JTextField(); //»óÇ°¸íÀ» ÀÔ·Â¹Þ±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_qty = new JTextField();	 //¼ö·®À» ÀÔ·Â¹Þ±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_price = new JTextField();	//°¡°ÝÀ» ÀÔ·Â¹Þ±â À§ÇÑ ÀÔ·Â»óÀÚ
+		jtf_no = new JTextField(); //ìƒí’ˆë²ˆí˜¸ë¥¼ ìž…ë ¥ë°›ê¸° ìœ„í•œ ìž…ë ¥ìƒìž
+		jtf_item = new JTextField(); //ìƒí’ˆëª…ì„ ìž…ë ¥ë°›ê¸° ìœ„í•œ ìž…ë ¥ìƒìž
+		jtf_qty = new JTextField();	 //ìˆ˜ëŸ‰ì„ ìž…ë ¥ë°›ê¸° ìœ„í•œ ìž…ë ¥ìƒìž
+		jtf_price = new JTextField();	//ê°€ê²©ì„ ìž…ë ¥ë°›ê¸° ìœ„í•œ ìž…ë ¥ìƒìž
 		
-		//ÀÔ·Â»óÀÚµé°ú ¹«¾ùÀ» ÀÔ·ÂÇØ¾ßÇÒÁö ¼³¸íÇÏ´Â ¶óº§µéÀ» ´ã±â À§ÇÑ ÆÐ³ÎÀ» ¸¸µë
+		//ìž…ë ¥ìƒìžë“¤ê³¼ ë¬´ì—‡ì„ ìž…ë ¥í•´ì•¼í• ì§€ ì„¤ëª…í•˜ëŠ” ë¼ë²¨ë“¤ì„ ë‹´ê¸° ìœ„í•œ íŒ¨ë„ì„ ë§Œë“¬
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(4,2));
 		
-		//¶óº§°ú ÀÔ·Â»óÀÚ(ÅØ½ºÆ®ÇÊµå)µéÀ» ÆÐ³Î¿¡ Â÷·Ê´ë·Î ´ãÀ½ 
-		p.add(new JLabel("»óÇ°¹øÈ£:"));
+		//ë¼ë²¨ê³¼ ìž…ë ¥ìƒìž(í…ìŠ¤íŠ¸í•„ë“œ)ë“¤ì„ íŒ¨ë„ì— ì°¨ë¡€ëŒ€ë¡œ ë‹´ìŒ 
+		p.add(new JLabel("ìƒí’ˆë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("»óÇ°ÀÌ¸§:"));
+		p.add(new JLabel("ìƒí’ˆì´ë¦„:"));
 		p.add(jtf_item);
-		p.add(new JLabel("»óÇ°¼ö·®:"));
+		p.add(new JLabel("ìƒí’ˆìˆ˜ëŸ‰:"));
 		p.add(jtf_qty);
-		p.add(new JLabel("»óÇ°´Ü°¡:"));
+		p.add(new JLabel("ìƒí’ˆë‹¨ê°€:"));
 		p.add(jtf_price);
 		
-		//"Ãß°¡"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_add = new JButton("Ãß°¡");
-		//"¸ñ·Ï"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_list = new JButton("¸ñ·Ï");
+		//"ì¶”ê°€"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_add = new JButton("ì¶”ê°€");
+		//"ëª©ë¡"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_list = new JButton("ëª©ë¡");
 		
-		//¹öÆ°µéÀ» ´ãÀ» ÆÐ³Î »ý¼º
+		//ë²„íŠ¼ë“¤ì„ ë‹´ì„ íŒ¨ë„ ìƒì„±
 		JPanel p2 = new JPanel();
 		p2.add(btn_add);
 		p2.add(btn_list);
 		
-		//ÀÔ·Â»óÀÚµéÀÌ ÀÖ´Â ÆÐ³Î°ú ¹öÆ°ÀÌ ÀÖ´Â ÆÐ³ÎÀ» °¨½Ò ÆÐ³ÎÀ» »ý¼º
+		//ìž…ë ¥ìƒìžë“¤ì´ ìžˆëŠ” íŒ¨ë„ê³¼ ë²„íŠ¼ì´ ìžˆëŠ” íŒ¨ë„ì„ ê°ìŒ€ íŒ¨ë„ì„ ìƒì„±
 		JPanel p_center = new JPanel();
 		p_center.setLayout(new BorderLayout());
 		
 		p_center.add(p,BorderLayout.CENTER);
 		p_center.add(p2,BorderLayout.SOUTH);
 		
-		//ÇÁ·¹ÀÓÀÇ °¡¿îµ¥¿¡ ÀÔ·Â»óÀÚ¿Í ¹öÆ°À» ´ã°í ÀÖ´Â p_centerÆÐ³ÎÀ» ´ãÀ½
+		//í”„ë ˆìž„ì˜ ê°€ìš´ë°ì— ìž…ë ¥ìƒìžì™€ ë²„íŠ¼ì„ ë‹´ê³  ìžˆëŠ” p_centeríŒ¨ë„ì„ ë‹´ìŒ
 		add(p_center,BorderLayout.CENTER);
-		//Å×ÀÌºíÀ» ´ã°í ÀÖ´Â ½ºÅ©·ÑÆÒÀ» ÇÁ·¹ÀÓÀÇ ¾Æ·¡ÂÊ¿¡ ´ãÀ½
+		//í…Œì´ë¸”ì„ ë‹´ê³  ìžˆëŠ” ìŠ¤í¬ë¡¤íŒ¬ì„ í”„ë ˆìž„ì˜ ì•„ëž˜ìª½ì— ë‹´ìŒ
 		add(jsp,BorderLayout.SOUTH);
 		
 		setSize(800,600);
