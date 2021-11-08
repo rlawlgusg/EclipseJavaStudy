@@ -1,5 +1,5 @@
 package com.sist.department;
-//Ãß°¡,¸ñ·Ï,¼öÁ¤,»èÁ¦ 
+//ì¶”ê°€,ëª©ë¡,ìˆ˜ì •,ì‚­ì œ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,8 +10,8 @@ public class DepartmentDao {
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##sist";
-	String pwd = "sist";
+	String user = "*****";
+	String pwd = "******";
 	int re;
 
 	public int InsertInfo(DepartmentVo dv) {
@@ -31,7 +31,7 @@ public class DepartmentDao {
 			re = pstmt.executeUpdate();
 				
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -41,7 +41,7 @@ public class DepartmentDao {
 				conn.close();
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ"+e.getMessage());
 			}
 		}
 		return re;
@@ -67,7 +67,7 @@ public class DepartmentDao {
 				list.add(dv);	
 			}
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -80,7 +80,7 @@ public class DepartmentDao {
 					rs.close();
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}
 		}	
 		return list;
@@ -102,7 +102,7 @@ public class DepartmentDao {
 			re = pstmt.executeUpdate();
 		
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -112,7 +112,7 @@ public class DepartmentDao {
 					conn.close();
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}
 		}
 		return re;
@@ -130,7 +130,7 @@ public class DepartmentDao {
 			pstmt.setInt(1, no);
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -140,7 +140,7 @@ public class DepartmentDao {
 					conn.close();
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}
 		}	
 		return re;
