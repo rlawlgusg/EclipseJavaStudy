@@ -7,17 +7,17 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 //DAO:Database Access Object
-//	  µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí¿¡ Á¢±ÙÇÏ¿© ÀÚ·á¸¦ Ãß°¡,ÀĞ±â,¼öÁ¤,»èÁ¦¸¦ ´ã´çÇÏ´Â °´Ã¼
+//	  ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”ì— ì ‘ê·¼í•˜ì—¬ ìë£Œë¥¼ ì¶”ê°€,ì½ê¸°,ìˆ˜ì •,ì‚­ì œë¥¼ ë‹´ë‹¹í•˜ëŠ” ê°ì²´
 public class DeptDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String userName = "c##sist";
-	private String passWord = "sist";
+	private String userName = "*****";
+	private String passWord = "*****";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí(dept)¿¡ ·¹ÄÚµå¸¦ Ãß°¡ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”(dept)ì— ë ˆì½”ë“œë¥¼ ì¶”ê°€í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public int insert(DeptVO d) {
 		int re = -1;
 		String sql = "insert into dept values(?,?,?)";
@@ -30,7 +30,7 @@ public class DeptDAO {
 			pstmt.setString(3, d.getDloc());
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally{
 			try {
 				if(pstmt != null) {
@@ -44,7 +44,7 @@ public class DeptDAO {
 		return re;
 	}
 		
-	//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí(dept)¿¡ ·¹ÄÚµå¸¦ ¼öÁ¤ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”(dept)ì— ë ˆì½”ë“œë¥¼ ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public int update(DeptVO d) {
 		int re = -1;
 		String sql = "update dept set dname=?,dloc=? where dno=?";
@@ -57,7 +57,7 @@ public class DeptDAO {
 			pstmt.setInt(3, d.getDno());
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ"+e.getMessage());
 		}finally{
 			try {
 				if(pstmt != null) {
@@ -70,7 +70,7 @@ public class DeptDAO {
 		}
 		return re;
 	}
-	//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí(dept)¿¡ ·¹ÄÚµå¸¦ »èÁ¦ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”(dept)ì— ë ˆì½”ë“œë¥¼ ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public int delete(int dno) {
 		int re = -1;
 		String sql = "delete depte where no=?";
@@ -79,7 +79,7 @@ public class DeptDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dno);	
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally{
 			try {
 				if(pstmt != null) {
@@ -92,7 +92,7 @@ public class DeptDAO {
 		}
 		return re;
 	}
-	//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí(dept)¿¡ ·¹ÄÚµå¸¦ ÀĞ¾î¿À´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”(dept)ì— ë ˆì½”ë“œë¥¼ ì½ì–´ì˜¤ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public ArrayList<DeptVO> listAll(){
 		ArrayList<DeptVO> list = new ArrayList<DeptVO>();
 		String sql = "select * from dept";
@@ -102,7 +102,7 @@ public class DeptDAO {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
-			//ResultSet¿¡ ÀĞ¾î¿Â(°Ë»öµÈ) ¸ğµç ·¹ÄÚµåµéÀ» list¿¡ ´ãÀ½
+			//ResultSetì— ì½ì–´ì˜¨(ê²€ìƒ‰ëœ) ëª¨ë“  ë ˆì½”ë“œë“¤ì„ listì— ë‹´ìŒ
 			while(rs.next()) {
 			//	int dno = rs.getInt(1);
 			//	String dname = rs.getString(2);
@@ -119,7 +119,7 @@ public class DeptDAO {
 				list.add(new DeptVO(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ"+e.getMessage());
 		}finally{
 			try {
 				if(rs != null) {
