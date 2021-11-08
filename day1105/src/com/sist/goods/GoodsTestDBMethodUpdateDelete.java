@@ -32,41 +32,41 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 	Vector colNames; 
 	Vector<Vector> rowData; 
 	
-	//¼öÁ¤ÇÒ »óÇ°¹øÈ£, »óÇ°ÀÌ¸§, ¼ö·®, °¡°İÀ» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¼öÁ¤ÇÏ´Â ¸Ş¼Òµå Á¤ÀÇ
+	//ìˆ˜ì •í•  ìƒí’ˆë²ˆí˜¸, ìƒí’ˆì´ë¦„, ìˆ˜ëŸ‰, ê°€ê²©ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ ë°ì´í„°ë² ì´ìŠ¤ì— ìˆ˜ì •í•˜ëŠ” ë©”ì†Œë“œ ì •ì˜
 	public void updateGoods(int no,String item,int qty,int price) {
 		//String sql = "update goods set item='"+item+"', qty="+qty+", price="+price+" where no="+no;
 		String sql = "update goods set item=?,qty=?,price=? where no=?";
 		Connection conn = null;
 		//Statement stmt = null;
-		//sql¸í·É¾î ¾È¿¡ ?°¡ ÀÖ´Â °æ¿ì StatementÀÇ ÈÄ¼ÕÅ¬·¡½ºÀÎ PreparedStatement¸¦ ÀÌ¿ë
+		//sqlëª…ë ¹ì–´ ì•ˆì— ?ê°€ ìˆëŠ” ê²½ìš° Statementì˜ í›„ì†í´ë˜ìŠ¤ì¸ PreparedStatementë¥¼ ì´ìš©
 		PreparedStatement pstmt = null;
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");		
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "****", "****");		
 			//stmt = conn.createStatement();
-			//PreparedStatement »ı¼º½Ã¿¡ ?°¡ ÀÖ´Â ¹Ì¸® ¸¸µé¾î³õÀº ¸í·É¾î¸¦ ¸Å°³º¯¼ö·Î Àü´Ş
+			//PreparedStatement ìƒì„±ì‹œì— ?ê°€ ìˆëŠ” ë¯¸ë¦¬ ë§Œë“¤ì–´ë†“ì€ ëª…ë ¹ì–´ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬
 			pstmt = conn.prepareStatement(sql);
-			//PreparedStatement °´Ã¼¿¡ °áÁ¤µÇÁö ¾Ê´Â ?¿¡ Â÷·Ê´ë·Î °ªÀ» ¼³Á¤
-			pstmt.setString(1, item); //1 : ¹°À½Ç¥ÀÇ À§Ä¡
-			pstmt.setInt(2, qty); //ÀÚ¹Ù¿¡¼­´Â ÀÎµ¦½º°¡ 1ºÎÅÍ ½ÃÀÛ
+			//PreparedStatement ê°ì²´ì— ê²°ì •ë˜ì§€ ì•ŠëŠ” ?ì— ì°¨ë¡€ëŒ€ë¡œ ê°’ì„ ì„¤ì •
+			pstmt.setString(1, item); //1 : ë¬¼ìŒí‘œì˜ ìœ„ì¹˜
+			pstmt.setInt(2, qty); //ìë°”ì—ì„œëŠ” ì¸ë±ìŠ¤ê°€ 1ë¶€í„° ì‹œì‘
 			pstmt.setInt(3, price); 
 			pstmt.setInt(4, no); 
 
-			//PreparedStatement °´Ã¼ »ı¼º½Ã¿¡ ÀÌ¹Ì sqlÀÌ Àü´ŞµÇ¾ú°í
-			//±×¸®°í À§¿¡¼­ °¢°¢ÀÇ ?°ªÀÌ ¿¬°áµÈ »óÅÂÀÌ±â ¶§¹®¿¡ 
-			//executeUpdateÇÒ¶§´Â sqlÀ» Àü´ŞÇÏÁö ¾Ê¾Æ¾ßÇÔ
-			//¸¸¾à ¿©±â¼­ ¸Å°³º¯¼ö·Î sqlÀ» Àü´ŞÇÏ°Ô µÇ¸é ?ÀÇ °ªÀÌ Á¤ÇØÁöÁö ¾Ê´Â »óÅÂ·Î ¸í·ÉÀ» ½ÇÇà 
+			//PreparedStatement ê°ì²´ ìƒì„±ì‹œì— ì´ë¯¸ sqlì´ ì „ë‹¬ë˜ì—ˆê³ 
+			//ê·¸ë¦¬ê³  ìœ„ì—ì„œ ê°ê°ì˜ ?ê°’ì´ ì—°ê²°ëœ ìƒíƒœì´ê¸° ë•Œë¬¸ì— 
+			//executeUpdateí• ë•ŒëŠ” sqlì„ ì „ë‹¬í•˜ì§€ ì•Šì•„ì•¼í•¨
+			//ë§Œì•½ ì—¬ê¸°ì„œ ë§¤ê°œë³€ìˆ˜ë¡œ sqlì„ ì „ë‹¬í•˜ê²Œ ë˜ë©´ ?ì˜ ê°’ì´ ì •í•´ì§€ì§€ ì•ŠëŠ” ìƒíƒœë¡œ ëª…ë ¹ì„ ì‹¤í–‰ 
 			int re = pstmt.executeUpdate(); 
 			if(re == 1) {
-				System.out.println("»óÇ°¼öÁ¤¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆìˆ˜ì •ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				printGoods();	
 			}else {
-				System.out.println("»óÇ°¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -90,7 +90,7 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
 			//stmt = conn.createStatement();
-			pstmt = conn.prepareStatement(sql);//sql¿¡ ?°¡ ¾øÀ¸´Ï µüÈ÷ ¼³Á¤ÇÒ °ªÀº ¾øÀ½			
+			pstmt = conn.prepareStatement(sql);//sqlì— ?ê°€ ì—†ìœ¼ë‹ˆ ë”±íˆ ì„¤ì •í•  ê°’ì€ ì—†ìŒ			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {	
 				int no = rs.getInt(1);
@@ -102,15 +102,15 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 				v.add(item);
 				v.add(qty);
 				v.add(price);
-				//±× º¤ÅÍ¸¦ rowData¿¡ ´ãÀ½
+				//ê·¸ ë²¡í„°ë¥¼ rowDataì— ë‹´ìŒ
 				rowData.add(v);
 				table.updateUI();
 			}	
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
-				//»ç¿ëÇß´ø ÀÚ¿øµéÀ» ´İ¾ÆÁÜ
+				//ì‚¬ìš©í–ˆë˜ ìì›ë“¤ì„ ë‹«ì•„ì¤Œ
 				if(rs != null) {
 					rs.close();
 				}
@@ -143,14 +143,14 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			
 			int re = pstmt.executeUpdate();
 			if(re == 1) {
-				System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				jtf_no.setText("");
 				jtf_item.setText("");
 				jtf_qty.setText("");
 				jtf_price.setText("");	
 				printGoods();	
 			}else {
-				System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -165,7 +165,7 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			} catch (Exception ex) {}				
 		}
 	}
-	//»èÁ¦ÇÒ »óÇ°¹øÈ£¸¦ ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ÇØ´ç»óÇ°À» µ¥ÀÌÅÍº£ÀÌ½º¿¡ »èÁ¦ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ì‚­ì œí•  ìƒí’ˆë²ˆí˜¸ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ í•´ë‹¹ìƒí’ˆì„ ë°ì´í„°ë² ì´ìŠ¤ì— ì‚­ì œí•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public void deleteGoods(int no) {
 		//String sql = "delete goods where no ="+no;
 		String sql = "delete goods where no =?";
@@ -180,17 +180,17 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			pstmt.setInt(1, no);
 			int re = pstmt.executeUpdate();
 			if(re == 1) {
-				System.out.println("»óÇ°À» »èÁ¦ÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤");
 				printGoods();
 				jtf_no.setText("");
 				jtf_item.setText("");
 				jtf_qty.setText("");
 				jtf_price.setText("");	
 			}else {
-				System.out.println("»èÁ¦¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ì‚­ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -205,10 +205,10 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 		
 	public GoodsTestDBMethodUpdateDelete() {
 		colNames = new Vector<>();
-		colNames.add("»óÇ°¹øÈ£");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("´Ü°¡");
+		colNames.add("ìƒí’ˆë²ˆí˜¸");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ë‹¨ê°€");
 		
 		rowData = new Vector<Vector>();
 		
@@ -216,49 +216,49 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 		
 		JScrollPane jsp = new JScrollPane(table);
 		
-		jtf_no = new JTextField(); //»óÇ°¹øÈ£¸¦ ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_item = new JTextField(); //»óÇ°¸íÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_qty = new JTextField();	 //¼ö·®À» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_price = new JTextField();	//°¡°İÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
+		jtf_no = new JTextField(); //ìƒí’ˆë²ˆí˜¸ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_item = new JTextField(); //ìƒí’ˆëª…ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_qty = new JTextField();	 //ìˆ˜ëŸ‰ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_price = new JTextField();	//ê°€ê²©ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
 		
-		//ÀÔ·Â»óÀÚµé°ú ¹«¾ùÀ» ÀÔ·ÂÇØ¾ßÇÒÁö ¼³¸íÇÏ´Â ¶óº§µéÀ» ´ã±â À§ÇÑ ÆĞ³ÎÀ» ¸¸µë
+		//ì…ë ¥ìƒìë“¤ê³¼ ë¬´ì—‡ì„ ì…ë ¥í•´ì•¼í• ì§€ ì„¤ëª…í•˜ëŠ” ë¼ë²¨ë“¤ì„ ë‹´ê¸° ìœ„í•œ íŒ¨ë„ì„ ë§Œë“¬
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(4,2));
 		
-		//¶óº§°ú ÀÔ·Â»óÀÚ(ÅØ½ºÆ®ÇÊµå)µéÀ» ÆĞ³Î¿¡ Â÷·Ê´ë·Î ´ãÀ½ 
-		p.add(new JLabel("»óÇ°¹øÈ£:"));
+		//ë¼ë²¨ê³¼ ì…ë ¥ìƒì(í…ìŠ¤íŠ¸í•„ë“œ)ë“¤ì„ íŒ¨ë„ì— ì°¨ë¡€ëŒ€ë¡œ ë‹´ìŒ 
+		p.add(new JLabel("ìƒí’ˆë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("»óÇ°ÀÌ¸§:"));
+		p.add(new JLabel("ìƒí’ˆì´ë¦„:"));
 		p.add(jtf_item);
-		p.add(new JLabel("»óÇ°¼ö·®:"));
+		p.add(new JLabel("ìƒí’ˆìˆ˜ëŸ‰:"));
 		p.add(jtf_qty);
-		p.add(new JLabel("»óÇ°´Ü°¡:"));
+		p.add(new JLabel("ìƒí’ˆë‹¨ê°€:"));
 		p.add(jtf_price);
 		
-		//"Ãß°¡"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_add = new JButton("Ãß°¡");
-		//"¸ñ·Ï"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_list = new JButton("¸ñ·Ï");
-		JButton btn_update = new JButton("¼öÁ¤");
-		JButton btn_delete = new JButton("»èÁ¦");
+		//"ì¶”ê°€"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_add = new JButton("ì¶”ê°€");
+		//"ëª©ë¡"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_list = new JButton("ëª©ë¡");
+		JButton btn_update = new JButton("ìˆ˜ì •");
+		JButton btn_delete = new JButton("ì‚­ì œ");
 		
-		//¹öÆ°µéÀ» ´ãÀ» ÆĞ³Î »ı¼º
+		//ë²„íŠ¼ë“¤ì„ ë‹´ì„ íŒ¨ë„ ìƒì„±
 		JPanel p2 = new JPanel();
 		p2.add(btn_add);
 		p2.add(btn_list);
 		p2.add(btn_update);
 		p2.add(btn_delete);
 		
-		//ÀÔ·Â»óÀÚµéÀÌ ÀÖ´Â ÆĞ³Î°ú ¹öÆ°ÀÌ ÀÖ´Â ÆĞ³ÎÀ» °¨½Ò ÆĞ³ÎÀ» »ı¼º
+		//ì…ë ¥ìƒìë“¤ì´ ìˆëŠ” íŒ¨ë„ê³¼ ë²„íŠ¼ì´ ìˆëŠ” íŒ¨ë„ì„ ê°ìŒ€ íŒ¨ë„ì„ ìƒì„±
 		JPanel p_center = new JPanel();
 		p_center.setLayout(new BorderLayout());
 		
 		p_center.add(p,BorderLayout.CENTER);
 		p_center.add(p2,BorderLayout.SOUTH);
 		
-		//ÇÁ·¹ÀÓÀÇ °¡¿îµ¥¿¡ ÀÔ·Â»óÀÚ¿Í ¹öÆ°À» ´ã°í ÀÖ´Â p_centerÆĞ³ÎÀ» ´ãÀ½
+		//í”„ë ˆì„ì˜ ê°€ìš´ë°ì— ì…ë ¥ìƒìì™€ ë²„íŠ¼ì„ ë‹´ê³  ìˆëŠ” p_centeríŒ¨ë„ì„ ë‹´ìŒ
 		add(p_center,BorderLayout.CENTER);
-		//Å×ÀÌºíÀ» ´ã°í ÀÖ´Â ½ºÅ©·ÑÆÒÀ» ÇÁ·¹ÀÓÀÇ ¾Æ·¡ÂÊ¿¡ ´ãÀ½
+		//í…Œì´ë¸”ì„ ë‹´ê³  ìˆëŠ” ìŠ¤í¬ë¡¤íŒ¬ì„ í”„ë ˆì„ì˜ ì•„ë˜ìª½ì— ë‹´ìŒ
 		add(jsp,BorderLayout.SOUTH);
 		
 		setSize(800,600);
@@ -292,8 +292,8 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//¼öÁ¤¹öÆ°À» ´©¸£¸é ¼öÁ¤ÇÒ »óÇ°ÀÇ ¹øÈ£, ÀÌ¸§, ¼ö·® °¡°İÀ» ÅØ½ºÆ®ÇÊµå·Î ºÎÅÍ ÀĞ¾î¿Í¼­
-				//±×°ÍÀ» ¸Ş¼Òµå¿¡°Ô Àü´ŞÇÏ¿© ¼öÁ¤ÇÏµµ·Ï ÇÔ
+				//ìˆ˜ì •ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ìˆ˜ì •í•  ìƒí’ˆì˜ ë²ˆí˜¸, ì´ë¦„, ìˆ˜ëŸ‰ ê°€ê²©ì„ í…ìŠ¤íŠ¸í•„ë“œë¡œ ë¶€í„° ì½ì–´ì™€ì„œ
+				//ê·¸ê²ƒì„ ë©”ì†Œë“œì—ê²Œ ì „ë‹¬í•˜ì—¬ ìˆ˜ì •í•˜ë„ë¡ í•¨
 				int no = Integer.parseInt(jtf_no.getText());
 				String item = jtf_item.getText();
 				int qty = Integer.parseInt(jtf_qty.getText());
@@ -315,7 +315,7 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			
 		});
 		
-		//Å×ÀÌºí¿¡ ¸¶¿ì½º ÀÌº¥Æ®¸¦ µî·ÏÇÏ¿© ¼±ÅÃÇÑ ÇàÀÇ »óÇ°ÀÇ Á¤º¸¸¦ °¢°¢ÀÇ ÀÔ·Â»óÀÚ¿¡ Ãâ·Â
+		//í…Œì´ë¸”ì— ë§ˆìš°ìŠ¤ ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•˜ì—¬ ì„ íƒí•œ í–‰ì˜ ìƒí’ˆì˜ ì •ë³´ë¥¼ ê°ê°ì˜ ì…ë ¥ìƒìì— ì¶œë ¥
 		table.addMouseListener(new MouseListener() {
 
 			@Override
@@ -334,9 +334,9 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				int index = table.getSelectedRow();
-				//rowDataÀÇ index¹øÂ°ÀÇ º¤ÅÍ¸¦ ²¨Áı¾î³»¿È
+				//rowDataì˜ indexë²ˆì§¸ì˜ ë²¡í„°ë¥¼ êº¼ì§‘ì–´ë‚´ì˜´
 				Vector vr = rowData.get(index);
-				//±× º¤ÅÍÀÇ ¿ä¼Ò¸¦ Â÷·Ê·Î ÀÔ·Â»óÀÚ¿¡ Ãâ·ÂÇÔ
+				//ê·¸ ë²¡í„°ì˜ ìš”ì†Œë¥¼ ì°¨ë¡€ë¡œ ì…ë ¥ìƒìì— ì¶œë ¥í•¨
 				jtf_no.setText(vr.get(0)+"");
 				jtf_item.setText(vr.get(1)+"");
 				jtf_qty.setText(vr.get(2)+"");

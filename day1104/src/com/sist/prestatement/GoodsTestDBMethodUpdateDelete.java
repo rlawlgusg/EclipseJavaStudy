@@ -29,8 +29,8 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 	Vector colNames; 
 	Vector<Vector> rowData; 
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String id = "c##sist";
-	String pw = "sist";
+	String id = "*****";
+	String pw = "*****";
 	Connection conn = null;
 	PreparedStatement ps = null;
 	public void updateGoods(int no,String item,int qty,int price) {
@@ -42,14 +42,14 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 	
 			int re = ps.executeUpdate();
 			if(re == 1) {
-				System.out.println("»óÇ°¼öÁ¤¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆìˆ˜ì •ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				printGoods();	
 			}else {
-				System.out.println("»óÇ°¼öÁ¤¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆìˆ˜ì •ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 				try {
 					if(ps != null) {
@@ -86,7 +86,7 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 				table.updateUI();
 			}	
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -104,7 +104,7 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 	}
 	
 	public void insertGoods(int no,String item,int qty,int price) {
-		String sql = "insert into goods(no,item,qty,price) values(?,?,?,?)"; //¼öÁ¤Çß´ç 
+		String sql = "insert into goods(no,item,qty,price) values(?,?,?,?)"; //ìˆ˜ì •í–ˆë‹¹ 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
@@ -115,14 +115,14 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			ps.setInt(4, price);
 			int re = ps.executeUpdate();
 			if(re == 1) {
-				System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				jtf_no.setText("");
 				jtf_item.setText("");
 				jtf_qty.setText("");
 				jtf_price.setText("");	
 				printGoods();	
 			}else {
-				System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 		}catch(Exception ex) {
 			System.out.println(ex.getMessage());
@@ -143,20 +143,20 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 			
 			int re = ps.executeUpdate();
 			if(re == 1) {
-				System.out.println("»óÇ°À» »èÁ¦ÇÏ¿´½À´Ï´Ù");
+				System.out.println("ìƒí’ˆì„ ì‚­ì œí•˜ì˜€ìŠµë‹ˆë‹¤");
 				printGoods();
 				jtf_no.setText("");
 				jtf_item.setText("");
 				jtf_qty.setText("");
 				jtf_price.setText("");	
 			}else {
-				System.out.println("»èÁ¦¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+				System.out.println("ì‚­ì œì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 			}
 			
 			
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(ps != null) {
@@ -171,10 +171,10 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 		
 	public GoodsTestDBMethodUpdateDelete() {
 		colNames = new Vector<>();
-		colNames.add("»óÇ°¹øÈ£");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("´Ü°¡");
+		colNames.add("ìƒí’ˆë²ˆí˜¸");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ë‹¨ê°€");
 		
 		rowData = new Vector<Vector>();
 		
@@ -190,19 +190,19 @@ public class GoodsTestDBMethodUpdateDelete extends JFrame {
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(4,2));
 		 
-		p.add(new JLabel("»óÇ°¹øÈ£:"));
+		p.add(new JLabel("ìƒí’ˆë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("»óÇ°ÀÌ¸§:"));
+		p.add(new JLabel("ìƒí’ˆì´ë¦„:"));
 		p.add(jtf_item);
-		p.add(new JLabel("»óÇ°¼ö·®:"));
+		p.add(new JLabel("ìƒí’ˆìˆ˜ëŸ‰:"));
 		p.add(jtf_qty);
-		p.add(new JLabel("»óÇ°´Ü°¡:"));
+		p.add(new JLabel("ìƒí’ˆë‹¨ê°€:"));
 		p.add(jtf_price);
 		
-		JButton btn_add = new JButton("Ãß°¡");
-		JButton btn_list = new JButton("¸ñ·Ï");
-		JButton btn_update = new JButton("¼öÁ¤");
-		JButton btn_delete = new JButton("»èÁ¦");
+		JButton btn_add = new JButton("ì¶”ê°€");
+		JButton btn_list = new JButton("ëª©ë¡");
+		JButton btn_update = new JButton("ìˆ˜ì •");
+		JButton btn_delete = new JButton("ì‚­ì œ");
 		
 		JPanel p2 = new JPanel();
 		p2.add(btn_add);

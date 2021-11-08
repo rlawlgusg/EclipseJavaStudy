@@ -10,10 +10,10 @@ import java.util.Vector;
 import oracle.net.aso.h;
 
 public class GoodsDao {
-		//µ¥ÀÌÅÍº£ÀÌ½º¿¡ Á¢±ÙÇÏ¿© ¸ğµç »óÇ°¸ñ·ÏÀ» ÀĞ¾î¿Í¼­ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå Á¤ÀÇ
+		//ë°ì´í„°ë² ì´ìŠ¤ì— ì ‘ê·¼í•˜ì—¬ ëª¨ë“  ìƒí’ˆëª©ë¡ì„ ì½ì–´ì™€ì„œ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ ì •ì˜
 		//select * from goods
-		//»óÇ°·¹ÄÚµå ÇÏ³ªÇÏ³ª¸¦ GoodsVo·Î Æ÷ÀåÇÏ°í
-		//ÀÌ°ÍµéÀ» ¸ğµÎ ArrayList¿¡ ´ã¾Æ¼­ ¹İÈ¯ÇÏ·Á°í ÇÔ
+		//ìƒí’ˆë ˆì½”ë“œ í•˜ë‚˜í•˜ë‚˜ë¥¼ GoodsVoë¡œ í¬ì¥í•˜ê³ 
+		//ì´ê²ƒë“¤ì„ ëª¨ë‘ ArrayListì— ë‹´ì•„ì„œ ë°˜í™˜í•˜ë ¤ê³  í•¨
 		public ArrayList<GoodsVo> listGoods(){
 			ArrayList<GoodsVo> list = new ArrayList<GoodsVo>();
 			String sql = "select * from goods Order by no";
@@ -22,7 +22,7 @@ public class GoodsDao {
 			ResultSet rs = null;  
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "****", "****");
 				pstmt = conn.prepareStatement(sql);		
 				rs = pstmt.executeQuery();
 				while(rs.next()) {	
@@ -30,14 +30,14 @@ public class GoodsDao {
 					String item = rs.getString(2);
 					int qty = rs.getInt(3);
 					int price = rs.getInt(4);
-					//·¹ÄÚµåÀÇ ³»¿ëÀ» GoodsVo°´Ã¼·Î ¸¸µé¾î list¿¡ ´ãÀ½
+					//ë ˆì½”ë“œì˜ ë‚´ìš©ì„ GoodsVoê°ì²´ë¡œ ë§Œë“¤ì–´ listì— ë‹´ìŒ
 					GoodsVo g = new GoodsVo(no, item, qty, price);
 					list.add(g);
 					//list.add(new GoodsVo(no,item,qty,price));
 
 				}	
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(rs != null) {
@@ -74,7 +74,7 @@ public class GoodsDao {
 				re = pstmt.executeUpdate(); 
 				
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(pstmt != null) {
@@ -135,7 +135,7 @@ public class GoodsDao {
 				re = pstmt.executeUpdate();
 				
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(pstmt != null) {

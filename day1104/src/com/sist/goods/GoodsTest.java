@@ -24,83 +24,83 @@ public class GoodsTest extends JFrame {
 	JTextField jtf_qty;
 	JTextField jtf_price;
 	
-	JTable table; //¸ğµç »óÇ° ¸ñ·ÏÀ» ¿¢¼¿°ú °°Àº ¸ğ¾çÀ¸·Î º¸¿©ÁÖ±â À§ÇÑ Å×ÀÌºíÀ» ¼±¾ğ
-	Vector colNames; //Å×ÀÌºíÀÇ Ä®·³ÀÌ¸§À» À§ÇÑ º¤ÅÍ¸¦ ¼±¾ğ
-	Vector<Vector> rowData; //Å×ÀÌºíÀÇ µ¥ÀÌÅÍ¸¦ À§ÇÑ º¤ÅÍ¸¦ ¼±¾ğ
+	JTable table; //ëª¨ë“  ìƒí’ˆ ëª©ë¡ì„ ì—‘ì…€ê³¼ ê°™ì€ ëª¨ì–‘ìœ¼ë¡œ ë³´ì—¬ì£¼ê¸° ìœ„í•œ í…Œì´ë¸”ì„ ì„ ì–¸
+	Vector colNames; //í…Œì´ë¸”ì˜ ì¹¼ëŸ¼ì´ë¦„ì„ ìœ„í•œ ë²¡í„°ë¥¼ ì„ ì–¸
+	Vector<Vector> rowData; //í…Œì´ë¸”ì˜ ë°ì´í„°ë¥¼ ìœ„í•œ ë²¡í„°ë¥¼ ì„ ì–¸
 	
 	public GoodsTest() {
 		
-		//Å×ÀÌºí¿¡ µé¾î°¥ Ä®·³ÀÌ¸§À» À§ÇÑ º¤ÅÍ¸¦ »ı¼ºÇÏ°í ÀÚ·á¸¦ Ãß°¡
+		//í…Œì´ë¸”ì— ë“¤ì–´ê°ˆ ì¹¼ëŸ¼ì´ë¦„ì„ ìœ„í•œ ë²¡í„°ë¥¼ ìƒì„±í•˜ê³  ìë£Œë¥¼ ì¶”ê°€
 		colNames = new Vector<>();
-		colNames.add("»óÇ°¹øÈ£");
-		colNames.add("»óÇ°¸í");
-		colNames.add("¼ö·®");
-		colNames.add("´Ü°¡");
+		colNames.add("ìƒí’ˆë²ˆí˜¸");
+		colNames.add("ìƒí’ˆëª…");
+		colNames.add("ìˆ˜ëŸ‰");
+		colNames.add("ë‹¨ê°€");
 		
-		//Å×ÀÌºí¿¡ µé¾î°¥ ½ÇÁ¦ µ¥ÀÌÅÍµéÀ» ´ã±â À§ÇÑ º¤ÅÍ¸¦ »ı¼ºÇÏ°í ÀÚ·á¸¦ Ãß°¡
+		//í…Œì´ë¸”ì— ë“¤ì–´ê°ˆ ì‹¤ì œ ë°ì´í„°ë“¤ì„ ë‹´ê¸° ìœ„í•œ ë²¡í„°ë¥¼ ìƒì„±í•˜ê³  ìë£Œë¥¼ ì¶”ê°€
 		rowData = new Vector<Vector>();
 		
 		Vector v1 = new Vector();
 		v1.add("1");
-		v1.add("»öÁ¾ÀÌ");
+		v1.add("ìƒ‰ì¢…ì´");
 		v1.add("10");
 		v1.add("1500");
 		Vector v2 = new Vector();
 		v2.add("2");
-		v2.add("µüÇ®");
+		v2.add("ë”±í’€");
 		v2.add("20");
 		v2.add("700");
 		
 		rowData.add(v1);
 		rowData.add(v2);
 		
-		//ÄÃ·³ÀÌ¸§ÀÌ ÀÖ´Â colNamesº¤ÅÍ¿Í ½ÇÁ¦µ¥ÀÌÅÍ°¡ ÀÖ´Â rowDataº¤ÅÍ¸¦ °®°í 
-		//¿¢¼¿°ú °°Àº È­¸éÀÇ Å×ÀÌºíÀ» »ı¼º
+		//ì»¬ëŸ¼ì´ë¦„ì´ ìˆëŠ” colNamesë²¡í„°ì™€ ì‹¤ì œë°ì´í„°ê°€ ìˆëŠ” rowDataë²¡í„°ë¥¼ ê°–ê³  
+		//ì—‘ì…€ê³¼ ê°™ì€ í™”ë©´ì˜ í…Œì´ë¸”ì„ ìƒì„±
 		table = new JTable(rowData, colNames);
 		
-		//Å×ÀÌºíÀÇ ÀÚ·á°¡ ³Ê¹« ¸¹¾Æ¼­ ÇÑ È­¸é¿¡ º¸ÀÌÁö ¾ÊÀ»¶§¿¡ ÀÚµ¿À¸·Î ½ºÅ©·ÑÀ» ¸¸µé¾îÁÖ´Â
-		//½ºÅ©·ÑÆÒÀ» »ı¼º
+		//í…Œì´ë¸”ì˜ ìë£Œê°€ ë„ˆë¬´ ë§ì•„ì„œ í•œ í™”ë©´ì— ë³´ì´ì§€ ì•Šì„ë•Œì— ìë™ìœ¼ë¡œ ìŠ¤í¬ë¡¤ì„ ë§Œë“¤ì–´ì£¼ëŠ”
+		//ìŠ¤í¬ë¡¤íŒ¬ì„ ìƒì„±
 		JScrollPane jsp = new JScrollPane(table);
 		
-		jtf_no = new JTextField(); //»óÇ°¹øÈ£¸¦ ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_item = new JTextField(); //»óÇ°¸íÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_qty = new JTextField();	 //¼ö·®À» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_price = new JTextField();	//°¡°İÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
+		jtf_no = new JTextField(); //ìƒí’ˆë²ˆí˜¸ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_item = new JTextField(); //ìƒí’ˆëª…ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_qty = new JTextField();	 //ìˆ˜ëŸ‰ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_price = new JTextField();	//ê°€ê²©ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
 		
-		//ÀÔ·Â»óÀÚµé°ú ¹«¾ùÀ» ÀÔ·ÂÇØ¾ßÇÒÁö ¼³¸íÇÏ´Â ¶óº§µéÀ» ´ã±â À§ÇÑ ÆĞ³ÎÀ» ¸¸µë
+		//ì…ë ¥ìƒìë“¤ê³¼ ë¬´ì—‡ì„ ì…ë ¥í•´ì•¼í• ì§€ ì„¤ëª…í•˜ëŠ” ë¼ë²¨ë“¤ì„ ë‹´ê¸° ìœ„í•œ íŒ¨ë„ì„ ë§Œë“¬
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(4,2));
 		
-		//¶óº§°ú ÀÔ·Â»óÀÚ(ÅØ½ºÆ®ÇÊµå)µéÀ» ÆĞ³Î¿¡ Â÷·Ê´ë·Î ´ãÀ½ 
-		p.add(new JLabel("»óÇ°¹øÈ£:"));
+		//ë¼ë²¨ê³¼ ì…ë ¥ìƒì(í…ìŠ¤íŠ¸í•„ë“œ)ë“¤ì„ íŒ¨ë„ì— ì°¨ë¡€ëŒ€ë¡œ ë‹´ìŒ 
+		p.add(new JLabel("ìƒí’ˆë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("»óÇ°ÀÌ¸§:"));
+		p.add(new JLabel("ìƒí’ˆì´ë¦„:"));
 		p.add(jtf_item);
-		p.add(new JLabel("»óÇ°¼ö·®:"));
+		p.add(new JLabel("ìƒí’ˆìˆ˜ëŸ‰:"));
 		p.add(jtf_qty);
-		p.add(new JLabel("»óÇ°´Ü°¡:"));
+		p.add(new JLabel("ìƒí’ˆë‹¨ê°€:"));
 		p.add(jtf_price);
 		
-		//"Ãß°¡"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_add = new JButton("Ãß°¡");
-		//"¸ñ·Ï"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_list = new JButton("¸ñ·Ï");
+		//"ì¶”ê°€"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_add = new JButton("ì¶”ê°€");
+		//"ëª©ë¡"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_list = new JButton("ëª©ë¡");
 		
-		//¹öÆ°µéÀ» ´ãÀ» ÆĞ³Î »ı¼º
+		//ë²„íŠ¼ë“¤ì„ ë‹´ì„ íŒ¨ë„ ìƒì„±
 		JPanel p2 = new JPanel();
 		p2.add(btn_add);
 		p2.add(btn_list);
 		
-		//ÀÔ·Â»óÀÚµéÀÌ ÀÖ´Â ÆĞ³Î°ú ¹öÆ°ÀÌ ÀÖ´Â ÆĞ³ÎÀ» °¨½Ò ÆĞ³ÎÀ» »ı¼º
+		//ì…ë ¥ìƒìë“¤ì´ ìˆëŠ” íŒ¨ë„ê³¼ ë²„íŠ¼ì´ ìˆëŠ” íŒ¨ë„ì„ ê°ìŒ€ íŒ¨ë„ì„ ìƒì„±
 		JPanel p_center = new JPanel();
 		p_center.setLayout(new BorderLayout());
 		
 		p_center.add(p,BorderLayout.CENTER);
 		p_center.add(p2,BorderLayout.SOUTH);
 		
-		//ÇÁ·¹ÀÓÀÇ °¡¿îµ¥¿¡ ÀÔ·Â»óÀÚ¿Í ¹öÆ°À» ´ã°í ÀÖ´Â p_centerÆĞ³ÎÀ» ´ãÀ½
+		//í”„ë ˆì„ì˜ ê°€ìš´ë°ì— ì…ë ¥ìƒìì™€ ë²„íŠ¼ì„ ë‹´ê³  ìˆëŠ” p_centeríŒ¨ë„ì„ ë‹´ìŒ
 		add(p_center,BorderLayout.CENTER);
-		//Å×ÀÌºíÀ» ´ã°í ÀÖ´Â ½ºÅ©·ÑÆÒÀ» ÇÁ·¹ÀÓÀÇ ¾Æ·¡ÂÊ¿¡ ´ãÀ½
+		//í…Œì´ë¸”ì„ ë‹´ê³  ìˆëŠ” ìŠ¤í¬ë¡¤íŒ¬ì„ í”„ë ˆì„ì˜ ì•„ë˜ìª½ì— ë‹´ìŒ
 		add(jsp,BorderLayout.SOUTH);
 		
 		setSize(800,600);
@@ -120,34 +120,34 @@ public class GoodsTest extends JFrame {
 				
 				String sql = "insert into goods values("+no+",'"+item+"',"+qty+","+price+")";
 				
-				//finally¿¡¼­µµ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï Connection°ú Statement
-				//º¯¼ö¸¦ try¹® ¹Ù±ù¿¡ ¼±¾ğ 
+				//finallyì—ì„œë„ ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡ Connectionê³¼ Statement
+				//ë³€ìˆ˜ë¥¼ tryë¬¸ ë°”ê¹¥ì— ì„ ì–¸ 
 				Connection conn = null;
 				Statement stmt = null;
 				
 				try {
-					//1. jdbcµå¶óÀÌ¹ö¸¦ ¸Ş¸ğ¸®·Î ·ÎµåÇÔ
+					//1. jdbcë“œë¼ì´ë²„ë¥¼ ë©”ëª¨ë¦¬ë¡œ ë¡œë“œí•¨
 					Class.forName("oracle.jdbc.driver.OracleDriver");
-					//2. DB¼­¹ö¿¡ ¿¬°á
-					conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
-					//3. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ÀÖ´Â Statement °´Ã¼¸¦ »ı¼ºÇÔ 
+					//2. DBì„œë²„ì— ì—°ê²°
+					conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "*****", "*****");
+					//3. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ìˆëŠ” Statement ê°ì²´ë¥¼ ìƒì„±í•¨ 
 					stmt = conn.createStatement();
-					//4. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇà
+					//4. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰
 					int re = stmt.executeUpdate(sql);
 					if(re == 1) {
-						System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+						System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 						jtf_no.setText("");
 						jtf_item.setText("");
 						jtf_qty.setText("");
 						jtf_price.setText("");
 					}else {
-						System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+						System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 					}
 				}catch(Exception ex) {
 					System.out.println(ex.getMessage());
 				}finally {
 					try {
-						//5. »ç¿ëÇß´ø ÀÚ¿øµéÀ» ´İ¾ÆÁÜ 			
+						//5. ì‚¬ìš©í–ˆë˜ ìì›ë“¤ì„ ë‹«ì•„ì¤Œ 			
 						if(stmt != null) {
 						stmt.close();
 						}

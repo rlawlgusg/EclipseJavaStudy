@@ -11,8 +11,8 @@ import com.sist.goods03.GoodsVo;
 public class MemberDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String id = "c##sist";
-	String pw = "sist";
+	String id = "*****";
+	String pw = "*****";
 	
 	public int insertMember(MemberVo m) {
 		int re = -1;
@@ -64,7 +64,7 @@ public class MemberDao {
 			
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -94,7 +94,7 @@ public class MemberDao {
 			re = pstmt.executeUpdate();
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
@@ -104,7 +104,7 @@ public class MemberDao {
 					conn.close();
 				}
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}
 		}		
 		return re;
@@ -132,7 +132,7 @@ public class MemberDao {
 				list.add(m);
 			}	
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {

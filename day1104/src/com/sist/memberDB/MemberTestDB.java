@@ -31,8 +31,8 @@ public class MemberTestDB extends JFrame {
 	Vector colNames; 
 	Vector<Vector> rowData;
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String id = "c##sist";
-	String pw = "sist";
+	String id = "*****";
+	String pw = "*****";
 	
 	Connection conn = null;
 	Statement stmt = null;
@@ -46,20 +46,20 @@ public class MemberTestDB extends JFrame {
 		JPanel p = new JPanel();
 		JPanel p2 = new JPanel();
 		p.setLayout(new GridLayout(5,2));
-		p.add(new JLabel("È¸¿ø¹øÈ£:"));
+		p.add(new JLabel("íšŒì›ë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("È¸¿øÀÌ¸§:"));
+		p.add(new JLabel("íšŒì›ì´ë¦„:"));
 		p.add(jtf_name);
-		p.add(new JLabel("È¸¿øÁÖ¼Ò:"));
+		p.add(new JLabel("íšŒì›ì£¼ì†Œ:"));
 		p.add(jtf_addr);
-		p.add(new JLabel("È¸¿ø³ªÀÌ:"));
+		p.add(new JLabel("íšŒì›ë‚˜ì´:"));
 		p.add(jtf_age);
-		p.add(new JLabel("ÀüÈ­¹øÈ£:"));
+		p.add(new JLabel("ì „í™”ë²ˆí˜¸:"));
 		p.add(jtf_phone);
-		JButton btn_add = new JButton("Ãß°¡");
-		JButton btn_list = new JButton("¸ñ·Ï");
-		JButton btn_update = new JButton("¼öÁ¤");
-		JButton btn_delete = new JButton("»èÁ¦");
+		JButton btn_add = new JButton("ì¶”ê°€");
+		JButton btn_list = new JButton("ëª©ë¡");
+		JButton btn_update = new JButton("ìˆ˜ì •");
+		JButton btn_delete = new JButton("ì‚­ì œ");
 		p2.add(btn_add);
 		p2.add(btn_list);
 		p2.add(btn_update);
@@ -69,11 +69,11 @@ public class MemberTestDB extends JFrame {
 		p_center.add(p,BorderLayout.CENTER);
 		p_center.add(p2,BorderLayout.SOUTH);
 		colNames = new Vector<>();
-		colNames.add("È¸¿ø¹øÈ£");
-		colNames.add("È¸¿øÀÌ¸§");
-		colNames.add("È¸¿øÁÖ¼Ò");
-		colNames.add("È¸¿ø³ªÀÌ");
-		colNames.add("ÀüÈ­¹øÈ£");
+		colNames.add("íšŒì›ë²ˆí˜¸");
+		colNames.add("íšŒì›ì´ë¦„");
+		colNames.add("íšŒì›ì£¼ì†Œ");
+		colNames.add("íšŒì›ë‚˜ì´");
+		colNames.add("ì „í™”ë²ˆí˜¸");
 		rowData = new Vector<Vector>();
 		table = new JTable(rowData, colNames);
 		JScrollPane jsp = new JScrollPane(table);
@@ -86,7 +86,7 @@ public class MemberTestDB extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				//³ªÁß¿¡ Ãß°¡
+				//ë‚˜ì¤‘ì— ì¶”ê°€
 				int no = Integer.parseInt(jtf_no.getText());
 				String name = jtf_name.getText();
 				String addr = jtf_addr.getText();
@@ -158,7 +158,7 @@ public class MemberTestDB extends JFrame {
 			stmt = conn.createStatement();
 			int re = stmt.executeUpdate(sql);
 			if(re == 1) {
-				System.out.println("È¸¿øµî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+				System.out.println("íšŒì›ë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 				jtf_no.setText("");
 				jtf_name.setText("");
 				jtf_addr.setText("");
@@ -166,7 +166,7 @@ public class MemberTestDB extends JFrame {
 				jtf_phone.setText("");		
 			}
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {		
 				if(stmt != null) {
@@ -203,7 +203,7 @@ public class MemberTestDB extends JFrame {
 					table.updateUI();
 				}			
 			}catch(Exception e) {
-				System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+				System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 			}finally {
 				try {
 					if(conn != null) {
@@ -213,14 +213,14 @@ public class MemberTestDB extends JFrame {
 					stmt.close();
 					}
 				}catch(Exception e) {
-					System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+					System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 				}
 			}
 		}
 	
 	public void updateMember(int no,String name, String addr, int age, String phone) {
 		String sql = "update member set name='"+name+"'addr='"+addr+"age="+age+"phone='"+phone+"'Where no="+no;
-		//¸í·É¾î ¹®¹ı¿À·ù ¸øÃ£°Ú´Ù
+		//ëª…ë ¹ì–´ ë¬¸ë²•ì˜¤ë¥˜ ëª»ì°¾ê² ë‹¤
 		
 		try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -229,13 +229,13 @@ public class MemberTestDB extends JFrame {
 		
 		int re = stmt.executeUpdate(sql);
 		if(re == 1) {
-			System.out.println("È¸¿øÁ¤º¸°¡ º¯°æµÆ´Ù~~~~");
+			System.out.println("íšŒì›ì •ë³´ê°€ ë³€ê²½ëë‹¤~~~~");
 		}else {
-			System.out.println("È¸¿øÁ¤º¸°¡ º¯°æµÇÁö ¾ÊÀ½");
+			System.out.println("íšŒì›ì •ë³´ê°€ ë³€ê²½ë˜ì§€ ì•ŠìŒ");
 		}
 		
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 			if(stmt != null) {
@@ -257,6 +257,6 @@ public class MemberTestDB extends JFrame {
 
 }
 
-//È¸¿ø¹øÈ£ È¸¿øÀÌ¸§ ÁÖ¼Ò ³ªÀÌ ÀüÈ­¹øÈ£¸¦ °ü¸®ÇÏ±â À§ÇÑ µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºíÀ» »ı¼º
-//CRUD°¡ °¡´ÉÇÑ ÇÁ·Î±×·¥ ÀÛ¼º 
+//íšŒì›ë²ˆí˜¸ íšŒì›ì´ë¦„ ì£¼ì†Œ ë‚˜ì´ ì „í™”ë²ˆí˜¸ë¥¼ ê´€ë¦¬í•˜ê¸° ìœ„í•œ ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸”ì„ ìƒì„±
+//CRUDê°€ ê°€ëŠ¥í•œ í”„ë¡œê·¸ë¨ ì‘ì„± 
 
