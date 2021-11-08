@@ -22,29 +22,29 @@ public class InsertGoods extends JFrame {
 	JTextField jtf_price;
 	
 	public InsertGoods() {
-		jtf_no = new JTextField(); //»óÇ°¹øÈ£¸¦ ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_item = new JTextField(); //»óÇ°¸íÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_qty = new JTextField();	 //¼ö·®À» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
-		jtf_price = new JTextField();	//°¡°İÀ» ÀÔ·Â¹Ş±â À§ÇÑ ÀÔ·Â»óÀÚ
+		jtf_no = new JTextField(); //ìƒí’ˆë²ˆí˜¸ë¥¼ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_item = new JTextField(); //ìƒí’ˆëª…ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_qty = new JTextField();	 //ìˆ˜ëŸ‰ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
+		jtf_price = new JTextField();	//ê°€ê²©ì„ ì…ë ¥ë°›ê¸° ìœ„í•œ ì…ë ¥ìƒì
 		
-		//ÀÔ·Â»óÀÚµé°ú ¹«¾ùÀ» ÀÔ·ÂÇØ¾ßÇÒÁö ¼³¸íÇÏ´Â ¶óº§µéÀ» ´ã±â À§ÇÑ ÆĞ³ÎÀ» ¸¸µë
+		//ì…ë ¥ìƒìë“¤ê³¼ ë¬´ì—‡ì„ ì…ë ¥í•´ì•¼í• ì§€ ì„¤ëª…í•˜ëŠ” ë¼ë²¨ë“¤ì„ ë‹´ê¸° ìœ„í•œ íŒ¨ë„ì„ ë§Œë“¬
 		JPanel p = new JPanel();
 		p.setLayout(new GridLayout(4,2));
 		
-		//¶óº§°ú ÀÔ·Â»óÀÚ(ÅØ½ºÆ®ÇÊµå)µéÀ» ÆĞ³Î¿¡ Â÷·Ê´ë·Î ´ãÀ½ 
-		p.add(new JLabel("»óÇ°¹øÈ£:"));
+		//ë¼ë²¨ê³¼ ì…ë ¥ìƒì(í…ìŠ¤íŠ¸í•„ë“œ)ë“¤ì„ íŒ¨ë„ì— ì°¨ë¡€ëŒ€ë¡œ ë‹´ìŒ 
+		p.add(new JLabel("ìƒí’ˆë²ˆí˜¸:"));
 		p.add(jtf_no);
-		p.add(new JLabel("»óÇ°ÀÌ¸§:"));
+		p.add(new JLabel("ìƒí’ˆì´ë¦„:"));
 		p.add(jtf_item);
-		p.add(new JLabel("»óÇ°¼ö·®:"));
+		p.add(new JLabel("ìƒí’ˆìˆ˜ëŸ‰:"));
 		p.add(jtf_qty);
-		p.add(new JLabel("»óÇ°´Ü°¡:"));
+		p.add(new JLabel("ìƒí’ˆë‹¨ê°€:"));
 		p.add(jtf_price);
 		
-		//"Ãß°¡"±Û¾¾°¡ ¾²¿©Áø ¹öÆ°À» ¸¸µë
-		JButton btn_add = new JButton("Ãß°¡");
+		//"ì¶”ê°€"ê¸€ì”¨ê°€ ì“°ì—¬ì§„ ë²„íŠ¼ì„ ë§Œë“¬
+		JButton btn_add = new JButton("ì¶”ê°€");
 	
-		//ÇÁ·¹ÀÓÀÇ °¡¿îµ¥¿¡ ÆĞ³ÎÀ» ´ã°í ¾Æ·¡ÂÊ¿¡ ¹öÆ°À» ´ãÀ½
+		//í”„ë ˆì„ì˜ ê°€ìš´ë°ì— íŒ¨ë„ì„ ë‹´ê³  ì•„ë˜ìª½ì— ë²„íŠ¼ì„ ë‹´ìŒ
 		add(p,BorderLayout.CENTER);
 		add(btn_add,BorderLayout.SOUTH);
 		
@@ -65,34 +65,34 @@ public class InsertGoods extends JFrame {
 				
 				String sql = "insert into goods values("+no+",'"+item+"',"+qty+","+price+")";
 				
-				//finally¿¡¼­µµ Á¢±ÙÇÒ ¼ö ÀÖµµ·Ï Connection°ú Statement
-				//º¯¼ö¸¦ try¹® ¹Ù±ù¿¡ ¼±¾ğ 
+				//finallyì—ì„œë„ ì ‘ê·¼í•  ìˆ˜ ìˆë„ë¡ Connectionê³¼ Statement
+				//ë³€ìˆ˜ë¥¼ tryë¬¸ ë°”ê¹¥ì— ì„ ì–¸ 
 				Connection conn = null;
 				Statement stmt = null;
 				
 				try {
-					//1. jdbcµå¶óÀÌ¹ö¸¦ ¸Ş¸ğ¸®·Î ·ÎµåÇÔ
+					//1. jdbcë“œë¼ì´ë²„ë¥¼ ë©”ëª¨ë¦¬ë¡œ ë¡œë“œí•¨
 					Class.forName("oracle.jdbc.driver.OracleDriver");
-					//2. DB¼­¹ö¿¡ ¿¬°á
-					conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "c##sist", "sist");
-					//3. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇàÇÒ ¼ö ÀÖ´Â Statement °´Ã¼¸¦ »ı¼ºÇÔ 
+					//2. DBì„œë²„ì— ì—°ê²°
+					conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "*****", "*****");
+					//3. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰í•  ìˆ˜ ìˆëŠ” Statement ê°ì²´ë¥¼ ìƒì„±í•¨ 
 					stmt = conn.createStatement();
-					//4. µ¥ÀÌÅÍº£ÀÌ½º ¸í·ÉÀ» ½ÇÇà
+					//4. ë°ì´í„°ë² ì´ìŠ¤ ëª…ë ¹ì„ ì‹¤í–‰
 					int re = stmt.executeUpdate(sql);
 					if(re == 1) {
-						System.out.println("»óÇ°µî·Ï¿¡ ¼º°øÇÏ¿´½À´Ï´Ù");
+						System.out.println("ìƒí’ˆë“±ë¡ì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤");
 						jtf_no.setText("");
 						jtf_item.setText("");
 						jtf_qty.setText("");
 						jtf_price.setText("");
 					}else {
-						System.out.println("»óÇ°µî·Ï¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù");
+						System.out.println("ìƒí’ˆë“±ë¡ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤");
 					}
 				}catch(Exception ex) {
 					System.out.println(ex.getMessage());
 				}finally {
 					try {
-						//5. »ç¿ëÇß´ø ÀÚ¿øµéÀ» ´İ¾ÆÁÜ 			
+						//5. ì‚¬ìš©í–ˆë˜ ìì›ë“¤ì„ ë‹«ì•„ì¤Œ 			
 						if(stmt != null) {
 						stmt.close();
 						}
