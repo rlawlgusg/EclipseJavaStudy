@@ -12,8 +12,8 @@ public class OrdersDAO {
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userName = "c##madang";
-	String passWord = "madang";
+	String userName = "*****";
+	String passWord = "*****";
 	
 	
 	public ArrayList<OrdersVO> SearchOrders(int custid){
@@ -35,7 +35,7 @@ public class OrdersDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("���ܹ߻�:"+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 		}finally {
 			try {
 			if(rs != null) {
