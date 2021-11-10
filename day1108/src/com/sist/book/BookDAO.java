@@ -11,12 +11,12 @@ public class BookDAO {
 	BookVO bv;
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String userName = "c##madang";
-	String passWord = "madang";
-	//ÃâÆÇ»ç¸íÀ» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ÇØ´ç ÃâÆÇ»çÀÇ ¸ğµç µµ¼­¸ñ·ÏÀ» °Ë»öÇÏ¿© ArrayList·Î ¹İÈ¯
-	//ÆÀº°·Î ¾Æ·¡ÀÇ ¸Ş¼ÒµåÀÇ ³»¿ëÀ» ¿Ï¼ºÇÏ°í 
-	//Á»ÀüÀÇ ÇÁ·Î±×·¥À» GUI·Î ¼öÁ¤
-	//È­¸é ±¸¼º, Å¬·¡½ºÀÌ¸§ ÀÚÀ¯·Ó°Ô 
+	String userName = "*****";
+	String passWord = "*****";
+	//ì¶œíŒì‚¬ëª…ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ í•´ë‹¹ ì¶œíŒì‚¬ì˜ ëª¨ë“  ë„ì„œëª©ë¡ì„ ê²€ìƒ‰í•˜ì—¬ ArrayListë¡œ ë°˜í™˜
+	//íŒ€ë³„ë¡œ ì•„ë˜ì˜ ë©”ì†Œë“œì˜ ë‚´ìš©ì„ ì™„ì„±í•˜ê³  
+	//ì¢€ì „ì˜ í”„ë¡œê·¸ë¨ì„ GUIë¡œ ìˆ˜ì •
+	//í™”ë©´ êµ¬ì„±, í´ë˜ìŠ¤ì´ë¦„ ììœ ë¡­ê²Œ 
 	public ArrayList<BookVO> SearchBook(String keyword){
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		
@@ -47,7 +47,7 @@ public class BookDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
