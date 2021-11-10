@@ -11,12 +11,12 @@ import com.sist.vo.BookVO;
 public class BookDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 	
 	
-	//°¡°İÀ» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ±× °¡°İ ÀÌÇÏÀÎ ¸ğµç µµ¼­¸ñ·ÏÀ» °Ë»öÇÏ¿©
-	//ArrayList·Î ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå Á¤ÀÇ
+	//ê°€ê²©ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ ê·¸ ê°€ê²© ì´í•˜ì¸ ëª¨ë“  ë„ì„œëª©ë¡ì„ ê²€ìƒ‰í•˜ì—¬
+	//ArrayListë¡œ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ ì •ì˜
 	public ArrayList<BookVO> searchBook(int price){
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		String sql = "select * from book where price <= ?";
@@ -37,7 +37,7 @@ public class BookDAO {
 			
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -76,7 +76,7 @@ public class BookDAO {
 			
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
