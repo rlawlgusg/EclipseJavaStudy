@@ -11,8 +11,8 @@ import com.sist.vo.OrdersBookCustomerVO;
 public class OrdersBookCustomerDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String pwd = "madang";
+	String user = "*****";
+	String pwd = "*****";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -26,12 +26,12 @@ public class OrdersBookCustomerDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			rs = pstmt.executeQuery();
-			//rs°¡ ´ÜÀÏ°ªÀÌ¸é while¹®À» ¾²Áö¾Ê°í if¸¦ ¾´´Ù
+			//rsê°€ ë‹¨ì¼ê°’ì´ë©´ whileë¬¸ì„ ì“°ì§€ì•Šê³  ifë¥¼ ì“´ë‹¤
 			if(rs.next()) {
 				total = rs.getInt(1);
 			}
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -51,8 +51,8 @@ public class OrdersBookCustomerDAO {
 	
 	
 	
-	//°í°´ÀÌ¸§À» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ±× °í°´ÀÌ ÁÖ¹®ÇÑ Á¤º¸¸¦ OrdersBookCustomerVO·Î
-	//Æ÷ÀåÇÏ¿© ArrayList·Î ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå¸¦ ¸¸µë 
+	//ê³ ê°ì´ë¦„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ ê·¸ ê³ ê°ì´ ì£¼ë¬¸í•œ ì •ë³´ë¥¼ OrdersBookCustomerVOë¡œ
+	//í¬ì¥í•˜ì—¬ ArrayListë¡œ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œë¥¼ ë§Œë“¬ 
 	public ArrayList<OrdersBookCustomerVO> listorders(String name){
 		ArrayList<OrdersBookCustomerVO> list = new ArrayList<OrdersBookCustomerVO>();
 		String sql = "select c.custid, name, bookname, publisher, price, saleprice, orderdate from book b, orders o , customer c where o.custid = c.custid and b.bookid = o.bookid and c.name = ? order by price desc";		
@@ -68,7 +68,7 @@ public class OrdersBookCustomerDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
