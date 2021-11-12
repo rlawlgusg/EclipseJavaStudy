@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class EMPDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
