@@ -10,8 +10,8 @@ import com.sist.vo.searchinfoVO;
 public class searchinfoDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String pwd = "madang";
+	String user = "*****";
+	String pwd = "*****";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -29,7 +29,7 @@ public class searchinfoDAO {
 			list.add(new searchinfoVO(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6), rs.getString(7)));
 		}
 		}catch(Exception e) {
-			System.out.println("���ܹ߻�:"+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
