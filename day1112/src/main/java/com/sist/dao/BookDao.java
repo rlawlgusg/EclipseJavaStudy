@@ -9,13 +9,13 @@ import java.util.ArrayList;
 public class BookDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	//°í°´ÀÌ¸§À» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ±× °í°´ÀÌ ÁÖ¹®ÇÏÁö ¾Ê´Â µµ¼­ÀÌ¸§µéÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ê³ ê°ì´ë¦„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ ê·¸ ê³ ê°ì´ ì£¼ë¬¸í•˜ì§€ ì•ŠëŠ” ë„ì„œì´ë¦„ë“¤ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public ArrayList<String> getNotPurchased(String name){
 		ArrayList<String> list = new ArrayList<String>();
 	//	String sql = "select bookname from book" 
@@ -38,7 +38,7 @@ public class BookDao {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
