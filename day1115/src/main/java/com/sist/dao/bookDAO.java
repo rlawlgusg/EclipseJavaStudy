@@ -10,12 +10,12 @@ public class bookDAO {
 
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 	
-	//Ãß°¡ÇÒ µµ¼­sÀÇ Á¤º¸¸¦ bookVO·Î ¸Å°³º¯¼ö¸¦ Àü´Ş¹Ş¾Æ 
-	//µ¥ÀÌÅÍº£ÀÌ½º Å×ÀÌºí book¿¡ insert¸¦ ¼öÇàÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
-	//int¸¦ ¹İÈ¯
+	//ì¶”ê°€í•  ë„ì„œsì˜ ì •ë³´ë¥¼ bookVOë¡œ ë§¤ê°œë³€ìˆ˜ë¥¼ ì „ë‹¬ë°›ì•„ 
+	//ë°ì´í„°ë² ì´ìŠ¤ í…Œì´ë¸” bookì— insertë¥¼ ìˆ˜í–‰í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
+	//intë¥¼ ë°˜í™˜
 	public int insertbook(bookVO b) {
 		int re = -1;
 		Connection conn = null;
@@ -30,7 +30,7 @@ public class bookDAO {
 			pstmt.setInt(4, b.getPrice());
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {

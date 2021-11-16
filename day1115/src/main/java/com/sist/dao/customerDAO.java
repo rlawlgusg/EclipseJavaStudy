@@ -10,8 +10,8 @@ public class customerDAO {
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -28,7 +28,7 @@ public class customerDAO {
 			re = pstmt.executeUpdate();
 
 		}catch(Exception e) {
-			System.out.println("���ܹ߻�:"+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
