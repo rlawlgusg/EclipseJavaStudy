@@ -10,11 +10,11 @@ import com.sist.vo.ordersvo;
 public class ordersdao {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "c##madang";
-	private String password = "madang";
+	private String user = "*****";
+	private String password = "*****";
 	
 	
-	//»õ·Î¿î ÁÖ¹®¹øÈ£¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå¸¦ Á¤ÀÇ
+	//ìƒˆë¡œìš´ ì£¼ë¬¸ë²ˆí˜¸ë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œë¥¼ ì •ì˜
 	public int getNextOrderid() {
 		int orderid = 0;
 		String sql = "select max(orderid)+1 from orders";
@@ -31,7 +31,7 @@ public class ordersdao {
 			}
 		
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -65,7 +65,7 @@ public class ordersdao {
 			
 			re = pstmt.executeUpdate();
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(pstmt != null) {
