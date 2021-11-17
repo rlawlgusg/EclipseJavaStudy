@@ -13,20 +13,20 @@ public class theaterDAO {
 	
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "c##sist";
-	private String password = "sist";
+	private String user = "*****";
+	private String password = "*****";
 	
-	//±ØÀåÀÌ¸§À» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ÇØ´ç±ØÀåÀÇ ¿À´Ã³¯Â¥ÀÇ ÃÑ ¼öÀÍÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå Á¤ÀÇ
+	//ê·¹ì¥ì´ë¦„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ í•´ë‹¹ê·¹ì¥ì˜ ì˜¤ëŠ˜ë‚ ì§œì˜ ì´ ìˆ˜ìµì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ ì •ì˜
 	public int getTotalByCinemaName(String cinemaName) {
 		int total = 0;
 		String sql = "select sum(count(*)*"
-				+ "	(select °¡°İ from »ó¿µ°ü where ¿¹¾à.±ØÀå¹øÈ£ = »ó¿µ°ü.±ØÀå¹øÈ£ and"
-				+ "	¿¹¾à.»ó¿µ°ü¹øÈ£ = »ó¿µ°ü.»ó¿µ°ü¹øÈ£)) total"
-				+ "	from ¿¹¾à"
-				+ "	where to_char(³¯Â¥,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd') and"
-				+ "	±ØÀå¹øÈ£ = (select ±ØÀå¹øÈ£ from ±ØÀå where ±ØÀåÀÌ¸§ = ?)"
-				+ "	group by ±ØÀå¹øÈ£, »ó¿µ°ü¹øÈ£"
-				+ "	order by ±ØÀå¹øÈ£, »ó¿µ°ü¹øÈ£";
+				+ "	(select ê°€ê²© from ìƒì˜ê´€ where ì˜ˆì•½.ê·¹ì¥ë²ˆí˜¸ = ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸ and"
+				+ "	ì˜ˆì•½.ìƒì˜ê´€ë²ˆí˜¸ = ìƒì˜ê´€.ìƒì˜ê´€ë²ˆí˜¸)) total"
+				+ "	from ì˜ˆì•½"
+				+ "	where to_char(ë‚ ì§œ,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd') and"
+				+ "	ê·¹ì¥ë²ˆí˜¸ = (select ê·¹ì¥ë²ˆí˜¸ from ê·¹ì¥ where ê·¹ì¥ì´ë¦„ = ?)"
+				+ "	group by ê·¹ì¥ë²ˆí˜¸, ìƒì˜ê´€ë²ˆí˜¸"
+				+ "	order by ê·¹ì¥ë²ˆí˜¸, ìƒì˜ê´€ë²ˆí˜¸";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -41,7 +41,7 @@ public class theaterDAO {
 			}
 		
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -62,16 +62,16 @@ public class theaterDAO {
 	
 	
 	
-	//±ØÀåÀÌ¸§À» ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ±× ±ØÀå¿¡¼­ ¿À´Ã³¯Â¥¿¡ »ó¿µÇÏ´Â
-	//»ó¿µ°ü Á¤º¸µéÀ» ArrayList¿¡ ´ã¾Æ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå Á¤ÀÇ 
+	//ê·¹ì¥ì´ë¦„ì„ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ ê·¸ ê·¹ì¥ì—ì„œ ì˜¤ëŠ˜ë‚ ì§œì— ìƒì˜í•˜ëŠ”
+	//ìƒì˜ê´€ ì •ë³´ë“¤ì„ ArrayListì— ë‹´ì•„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ ì •ì˜ 
 	public ArrayList<TheaterVO> listTheater(String cinemaName){
 		ArrayList<TheaterVO> list = new ArrayList<TheaterVO>();
-		String sql = "select »ó¿µ°ü.±ØÀå¹øÈ£, »ó¿µ°ü.»ó¿µ°ü¹øÈ£, ¿µÈ­Á¦¸ñ, °¡°İ, ÁÂ¼®¼ö  from »ó¿µ°ü, ±ØÀå"
-				+ " where (»ó¿µ°ü.±ØÀå¹øÈ£, »ó¿µ°ü.»ó¿µ°ü¹øÈ£) in (select distinct ±ØÀå¹øÈ£ , »ó¿µ°ü¹øÈ£"
-				+ " from ¿¹¾à"
-				+ " where to_char(³¯Â¥,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd')) and"
-				+ " »ó¿µ°ü.±ØÀå¹øÈ£ = ±ØÀå.±ØÀå¹øÈ£ and"
-				+ " ±ØÀåÀÌ¸§ = ?";
+		String sql = "select ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸, ìƒì˜ê´€.ìƒì˜ê´€ë²ˆí˜¸, ì˜í™”ì œëª©, ê°€ê²©, ì¢Œì„ìˆ˜  from ìƒì˜ê´€, ê·¹ì¥"
+				+ " where (ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸, ìƒì˜ê´€.ìƒì˜ê´€ë²ˆí˜¸) in (select distinct ê·¹ì¥ë²ˆí˜¸ , ìƒì˜ê´€ë²ˆí˜¸"
+				+ " from ì˜ˆì•½"
+				+ " where to_char(ë‚ ì§œ,'yyyy/mm/dd') = to_char(sysdate,'yyyy/mm/dd')) and"
+				+ " ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸ = ê·¹ì¥.ê·¹ì¥ë²ˆí˜¸ and"
+				+ " ê·¹ì¥ì´ë¦„ = ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs= null;
@@ -87,7 +87,7 @@ public class theaterDAO {
 			}
 					
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {

@@ -12,8 +12,8 @@ public class customerdao {
 	
 		private String driver = "oracle.jdbc.driver.OracleDriver";
 		private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		private String user = "c##madang";
-		private String password = "madang";
+		private String user = "*****";
+		private String password = "*****";
 		
 		public ArrayList<customervo> listcustomer(){
 			ArrayList<customervo> list = new ArrayList<customervo>();
@@ -31,7 +31,7 @@ public class customerdao {
 				}
 				
 			}catch(Exception e) {
-				System.out.println("���ܹ߻�:"+e.getMessage());
+				System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 			}finally {
 				try {
 					if(rs != null) {

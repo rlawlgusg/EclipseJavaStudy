@@ -12,12 +12,12 @@ import com.sist.vo.customervo;
 public class CustomerinfoDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "c##sist";
-	private String password = "sist";
+	private String user = "*****";
+	private String password = "*****";
 	
 	public ArrayList<String> printCustName() {
 		ArrayList<String> name = new ArrayList<String>();
-		String sql = "select ÀÌ¸§ from °í°´ order by ÀÌ¸§";
+		String sql = "select ì´ë¦„ from ê³ ê° order by ì´ë¦„";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -31,7 +31,7 @@ public class CustomerinfoDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
@@ -53,12 +53,12 @@ public class CustomerinfoDAO {
 	
 	public ArrayList<CustomerInfoVO> printCustInfo(String custName){
 		ArrayList<CustomerInfoVO> list = new ArrayList<CustomerInfoVO>();
-		String sql = "select ±ØÀåÀÌ¸§, »ó¿µ°ü.»ó¿µ°ü¹øÈ£, ¿µÈ­Á¦¸ñ, ³¯Â¥, ÁÂ¼®¹øÈ£, °¡°İ"
-				+ "	from ±ØÀå, »ó¿µ°ü, ¿¹¾à"
-				+ "	where ±ØÀå.±ØÀå¹øÈ£ = »ó¿µ°ü.±ØÀå¹øÈ£ and"
-				+ "	»ó¿µ°ü.±ØÀå¹øÈ£ = ¿¹¾à.±ØÀå¹øÈ£ and"
-				+ "	»ó¿µ°ü.»ó¿µ°ü¹øÈ£ = ¿¹¾à.±ØÀå¹øÈ£ and"
-				+ "	°í°´¹øÈ£ = (select °í°´¹øÈ£ from °í°´ where ÀÌ¸§ = ?)";
+		String sql = "select ê·¹ì¥ì´ë¦„, ìƒì˜ê´€.ìƒì˜ê´€ë²ˆí˜¸, ì˜í™”ì œëª©, ë‚ ì§œ, ì¢Œì„ë²ˆí˜¸, ê°€ê²©"
+				+ "	from ê·¹ì¥, ìƒì˜ê´€, ì˜ˆì•½"
+				+ "	where ê·¹ì¥.ê·¹ì¥ë²ˆí˜¸ = ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸ and"
+				+ "	ìƒì˜ê´€.ê·¹ì¥ë²ˆí˜¸ = ì˜ˆì•½.ê·¹ì¥ë²ˆí˜¸ and"
+				+ "	ìƒì˜ê´€.ìƒì˜ê´€ë²ˆí˜¸ = ì˜ˆì•½.ê·¹ì¥ë²ˆí˜¸ and"
+				+ "	ê³ ê°ë²ˆí˜¸ = (select ê³ ê°ë²ˆí˜¸ from ê³ ê° where ì´ë¦„ = ?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -73,7 +73,7 @@ public class CustomerinfoDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
