@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sist.dao.CustomerinfoDAO"%>
-<%@page import="com.sist.vo.CustomerInfoVO"%>
+<%@page import="com.sist.dao.CustomerInfoVO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>

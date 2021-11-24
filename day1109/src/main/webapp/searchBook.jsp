@@ -1,4 +1,4 @@
-<%@page import="com.sist.vo.BookVO"%>
+<%@page import="com.sist.dao.BookVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.catalina.filters.ExpiresFilter.XServletOutputStream"%>
 <%@page import="com.sist.dao.BookDAO"%>

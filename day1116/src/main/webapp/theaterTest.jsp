@@ -1,4 +1,4 @@
-<%@page import="com.sist.vo.TheaterVO"%>
+<%@page import="com.sist.dao.TheaterVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sist.dao.theaterDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"

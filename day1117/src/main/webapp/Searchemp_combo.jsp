@@ -1,4 +1,4 @@
-<%@page import="com.sist.vo.empVO"%>
+<%@page import="com.sist.dao.empVO"%>
 <%@page import="com.sist.dao.empDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"

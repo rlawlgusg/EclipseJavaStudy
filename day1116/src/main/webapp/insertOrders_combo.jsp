@@ -1,6 +1,6 @@
 <%@page import="java.lang.StackWalker.Option"%>
-<%@page import="com.sist.vo.customervo"%>
-<%@page import="com.sist.vo.bookvo"%>
+<%@page import="com.sist.dao.customervo"%>
+<%@page import="com.sist.dao.bookvo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sist.dao.customerdao"%>
 <%@page import="com.sist.dao.bookdao"%>

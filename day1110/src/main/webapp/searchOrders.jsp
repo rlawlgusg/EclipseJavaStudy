@@ -1,4 +1,4 @@
-<%@page import="com.sist.vo.OrdersBookCustomerVO"%>
+<%@page import="com.sist.dao.OrdersBookCustomerVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.sist.dao.OrdersBookCustomerDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"

@@ -1,5 +1,5 @@
 <%@page import="com.sist.dao.ordersdao"%>
-<%@page import="com.sist.vo.ordersvo"%>
+<%@page import="com.sist.dao.ordersvo"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
