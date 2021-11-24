@@ -11,8 +11,8 @@ import com.sist.vo.RecommendBookVO;
 public class RecommendBookDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "c##madang";
-	private String password = "madang";
+	private String user = "*****";
+	private String password = "*****";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -45,7 +45,7 @@ public class RecommendBookDAO {
 			}
 			
 		}catch(Exception e) {
-			System.out.println("���ܹ߻�:"+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 		}finally {
 			try {
 				if(rs != null) {
