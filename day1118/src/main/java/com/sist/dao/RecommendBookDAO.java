@@ -11,8 +11,8 @@ import com.sist.vo.RecommendBookVO;
 public class RecommendBookDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "*****";
-	private String password = "*****";
+	private String user = "c##madang";
+	private String password = "madang";
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
