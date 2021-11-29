@@ -15,16 +15,16 @@
 <body>
 	<table>
 	<tr>
-	<td>µµΌ­ΉψΘ£</td>
-	<td>µµΌ­Έν</td>
+	<td>λ„μ„λ²νΈ</td>
+	<td>λ„μ„λª…</td>
 	</tr>
 	
 <%
 	String sql = "select bookid, bookname from book";
 	 String driver = "oracle.jdbc.driver.OracleDriver";
 	 String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	 String user = "c##madang";
-	 String password = "madang";
+	 String user = "*****";
+	 String password = "*****";
 	 Connection conn = null;
 	 Statement stmt = null;
 	 ResultSet rs = null;
@@ -54,7 +54,7 @@
 			}
 			
 	 }catch(Exception e){
-		System.out.println("ΏΉΏάΉί»ύ:"+e.getMessage());
+		System.out.println("μμ™Έλ°μƒ:"+e.getMessage());
 	}
 
 %>

@@ -11,8 +11,8 @@ import com.sist.vo.BookVO;
 public class BookDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	private String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	private String user = "c##madang";
-	private String password = "madang";
+	private String user = "*****";
+	private String password = "*****";
 	
 	public ArrayList<BookVO> listTop3(){
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
@@ -31,7 +31,7 @@ public class BookDAO {
 			
 			
 		}catch(Exception e) {
-			System.out.println("���ܹ߻�:"+e.getMessage());
+			System.out.println("¿¹¿Ü¹ß»ý:"+e.getMessage());
 		}finally {
 			try {
 				

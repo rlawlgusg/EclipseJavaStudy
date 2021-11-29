@@ -13,11 +13,11 @@ public class BookDAO {
 	String sql = "select bookid, bookname from book";
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@localhost:1521:XE";
-	String user = "c##madang";
-	String password = "madang";
+	String user = "*****";
+	String password = "*****";
 	
 	 
-	//¸ğµç µµ¼­ ¸ñ·ÏÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	//ëª¨ë“  ë„ì„œ ëª©ë¡ì„ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	public ArrayList<BookVO> listBook(){
 		ArrayList<BookVO> list = new ArrayList<BookVO>();
 		String sql = "select * from book";
@@ -43,13 +43,13 @@ public class BookDAO {
 				}
 				
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		} 
 		
 		return list;
 	}
 	
-	//µµ¼­¹øÈ£¸¦ ¸Å°³º¯¼ö·Î Àü´Ş¹Ş¾Æ ÇØ´ç µµ¼­¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼Òµå
+	//ë„ì„œë²ˆí˜¸ë¥¼ ë§¤ê°œë³€ìˆ˜ë¡œ ì „ë‹¬ë°›ì•„ í•´ë‹¹ ë„ì„œë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì†Œë“œ
 	public BookVO getBook(int bookid) {
 		BookVO b = null;
 		String sql = "select * from book where bookid = ?";
@@ -67,7 +67,7 @@ public class BookDAO {
 			}
 		 
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 		
 		

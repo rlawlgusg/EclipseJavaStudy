@@ -12,14 +12,14 @@ public class BookList {
 	public BookList() {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String userid = "c##madang";
-		String pwd = "madang";
+		String userid = "*****";
+		String pwd = "*****";
 		
 		try {
 			Class.forName(driver);
-			System.out.println("靛扼捞滚 肺靛 己傍!");
+			System.out.println("霌滊澕鞚措矂 搿滊摐 靹标车!");
 			conn = DriverManager.getConnection(url, userid, pwd);
-			System.out.println("单捞磐海捞胶 楷搬 己傍!");	
+			System.out.println("雿办澊韯半矤鞚挫姢 鞐瓣舶 靹标车!");	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
