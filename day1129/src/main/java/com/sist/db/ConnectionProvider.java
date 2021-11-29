@@ -12,13 +12,13 @@ public class ConnectionProvider {
 		try {
 			String driver = "oracle.jdbc.driver.OracleDriver";
 			String url = "jdbc:oracle:thin:@localhost:1521:XE";
-			String user = "c##olympus";
-			String password = "olympus";
+			String user = "*****";
+			String password = "*****";
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
 			
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 		return conn;
 	}
@@ -37,7 +37,7 @@ public class ConnectionProvider {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 	
 	
@@ -56,7 +56,7 @@ public class ConnectionProvider {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("¿¹¿Ü¹ß»ı:"+e.getMessage());
+			System.out.println("ì˜ˆì™¸ë°œìƒ:"+e.getMessage());
 		}
 	
 	
