@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="WriteBoard.jsp" method="post">
+		카테고리 선택 
+		<select>
+			<option value="공지사항">공지사항</option>	
+			<option value="자유게시판">자유게시판</option>	
+			<option value="묻고답하기">묻고답하기</option>		
+		</select>
+		<br>
+		게시물번호: <input type="number" name="number"> <br>
+		작성자이름: <input type="name" name="name"> <br>
+		작성자이메일: <input type="email" name="email"> <br>
+		글제목: <input type="text" name="title"> <br>
+		글암호: <input type="password" name="pwd"> <br>
+		글내용: <br>
+		<textarea  name="contents" rows="5" cols="60">내용을 입력해주세요</textarea><br>
+		
+		<input type="submit" value="등록">
+	
+	
+	
+	</form>
+	
+</body>
+</html>
