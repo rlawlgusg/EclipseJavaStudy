@@ -1,0 +1,39 @@
+@charset "EUC-KR";
+
+	p{
+		color : blue;
+	}
+	#title{
+		background-color: yellow;
+	}
+	.name{
+		background-color: pink;
+	}
+	/*
+	div{
+		background-color: black;
+		color: white;
+	}
+	*/
+	/*
+	div{
+		background-color: #000000;
+		color: #ffffff;
+	}
+	*/
+	#div1{
+		background-color: rgb(0,0,0);
+		color: rgb(255,255,255);
+	}
+	#div2{
+		background-color: rgb(0,0,0,1);
+		color: rgb(255,255,255);
+	}
+	#div3{
+		background-color: rgb(0,0,0,0);
+		color: rgb(255,255,255);
+	}
+	#div4{
+		background-color: rgb(0,0,0,0.5);
+		color: rgb(255,255,255);
+	}
