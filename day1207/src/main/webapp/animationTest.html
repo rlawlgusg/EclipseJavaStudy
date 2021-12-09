@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+		.box{
+			width: 60px;
+			height: 60px;
+			margin: 60px;
+			animation: rotate 1.5s infinite alternate;
+			background: blue;
+		}
+	
+	
+	@keyframes rotate{
+		from{
+			transform:perspective(120px) rotateX(0deg) rotateY(0deg);
+		}
+		50%{
+			transform:perspective(120px) rotateX(-180deg) rotateY(0deg);
+		}	
+		to{
+			transform:perspective(120px) rotateX(-180deg) rotateY(-180deg);
+		}
+	}
+	@keyframes background{
+		from{
+			background:red;
+		}
+		50%{
+			background:green;
+		}	
+		to{
+			background:blue;
+		}
+	
+	}
+</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>

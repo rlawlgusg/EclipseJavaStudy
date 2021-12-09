@@ -1,0 +1,89 @@
+@charset "EUC-KR";
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: rgb(9,100,160);
+}
+
+#container{
+	width: 320px;
+	margin: 50px auto;
+}
+
+.card{
+	position: relative;
+	width: 300px;
+	height: 500px;
+	margin: 20px 10px;	
+	border: 1px solid #0f0f0f;
+	background-color: #ffffff;
+}
+.words{
+	position: absolute;
+	left: 10px;
+	top: 300px;
+	padding: 10px;
+	text-align: center;
+}
+/*반응형 웹은 위한 css를 설정할 때는 
+모바일 버전을 먼저 만들고 
+-그것을 다 포함하고
+	테블릿 버전을 만들고
+-테블릿 버전을 다 포함하고
+	PC용 버전을 만듬
+*/
+
+
+@media screen and (min-width:768px) and (max-width:1719px){
+	/*컨테이너의 가로폭을 이미지와 글자를 표현할 수 있을 만큼 크게 설정*/
+	#container{
+		width: 570px;
+		margin: 50px auto;
+	}
+	
+	.card{
+		postion:relative;
+		width:550px;
+		height:250px;
+		margin:	20px 10px;
+		border: 1px solid #0f0f0f;
+		background-color: #ffffff;
+	}
+	.words{
+		position: absolute;
+		left: 310px;
+		top: 50px;
+		text-align: center;
+		width: 200px;
+	}
+}
+
+@media screen and (min-width:1720px){
+	/*컨테이너의 가로폭을 이미지와 글자를 표현할 수 있을 만큼 크게 설정*/
+	#container{
+		width: 1710px;
+		margin: 50px auto;
+	}
+	
+	.card{
+		postion:relative;
+		width:550px;
+		height:250px;
+		margin:	20px 10px;
+		border: 1px solid #0f0f0f;
+		background-color: #ffffff;
+		float: left;
+	}
+	.words{
+		position: absolute;
+		left: 310px;
+		top: 50px;
+		text-align: center;
+		width: 200px;
+	}
+}

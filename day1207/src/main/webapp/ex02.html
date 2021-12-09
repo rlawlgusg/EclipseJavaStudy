@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.box{
+		width:100px;
+		height: 100px;
+		background: green;
+		border: solid 1px black;
+		border-radius: 10px;
+	}
+	.box:hover {
+		animation: chColor 3s;
+	}
+	@keyframes chColor{
+		from{
+			background:green
+		}
+		to{
+			background:yellow;
+		}
+	}
+	
+</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+</html>
