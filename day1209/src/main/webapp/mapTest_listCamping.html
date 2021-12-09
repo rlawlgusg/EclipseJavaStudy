@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$.getJSON("전국야영(캠핑)장표준데이터.json",function(data){
+		//console.log(data);
+		var arr = data['records'];
+		for(var i=0;i<arr.length;i++){
+			var row = arr[i];
+			var name = row['야영(캠핑)장명'];
+			var addr = row['소재지도로명주소'];
+			var lat = row['위도'];
+			var lng = row['경도'];
+			
+			var td1 = $("<td></td>").html(name);
+			var td2 = $("<td></td>").html(addr);
+			var td3 = $("<td></td>").html(lat);
+			var td4 = $("<td></td>").html(lng);
+			var tr = $("<tr></tr>");
+			$(tr).append(td1,td2,td3,td4);
+			$("#list").append(tr);
+		}
+	});
+});
+</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>캠핑장이름</th>
+				<th>주소</th>
+				<th>위도</th>
+				<th>경도</th>
+			</tr>
+		</thead>
+		<tbody id="list">
+		
+		</tbody>
+	</table>
+</body>
+</html>

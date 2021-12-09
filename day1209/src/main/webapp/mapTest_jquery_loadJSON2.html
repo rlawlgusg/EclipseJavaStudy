@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fd7b3691ae98830f92497719a3fe238"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$.getJSON("전국야영(캠핑)장표준데이터.json", function(data){
+			var arr = data['records'];
+			
+			$.each(arr, function(index, row){
+				var name = row['야영(캠핑)장명'];
+				var addr = row['소재지도로명주소'];
+				var lat = row['위도'];
+				var lng = row['경도'];
+				console.log(name,"/",addr,"/",lat,"/",lng);
+		
+			});
+		});
+		
+		var mapContainer = document.getElementById("map");
+		var mapOption = {
+			center : new kakao.maps.LatLng(37.556721191057285, 126.91954859760443),
+			level:3
+		};
+		var map = new kakao.maps.Map(mapContainer,mapOption);
+		
+	});
+		
+</script>
+</head>
+<body>
+	<div id="map" style="width: 100%;height: 500px"></div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="map" style="width: 100%;height: 500px">
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3fd7b3691ae98830f92497719a3fe238"></script>
+	<script type="text/javascript">
+		var mapContainer = document.getElementById("map");
+		var center = new kakao.maps.LatLng(37.556721191057285, 126.91954859760443);
+		var mapOption = {
+				center:center,
+				level:1
+		};
+		var map = new kakao.maps.Map(mapContainer,mapOption);
+		var marker = new kakao.maps.Marker({
+			position:center
+		});
+		marker.setMap(map);
+		
+	</script>
+	
+	</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	span{
+		display: inline-block;
+		margin: 5px;
+		cursor: pointer;
+	}
+</style>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	var pageSize = 20; 	//한 화면에 20개씩 보여주고 싶음
+	var totalRecord; 	//전체 레코드수를 담기 위한 변수
+	var totalPage; 		//전체 페이지수를 담기 위한 변수
+	var arr; 			//전체 데이터를 담기 위한 배열
+	var pageGroup = 10; 
+	/*한 화면에 10개의 페이지를 보여주고 싶음 만약 현재페이지가 1페이지라면 현재 화면에 보여줘야할 시작페이지는 1,마지막페이지는 10 
+	11,12,13,14,15,16,17,18,19,20페이지라면 현재 화면에 보여줘야할 시작페이지는 11, 마지막페이지는 20
+	*/
+	$.getJSON("전국야영(캠핑)장표준데이터.json",function(data){
+		//console.log(data);
+		arr = data['records'];
+		totalRecord = arr.length;
+		totalPage = Math.ceil(totalRecord / pageSize);
+		console.log(totalPage);
+		printPageNumber(1);
+		printPage(1)
+		
+		
+	}); //end getJSON
+	
+	//현재페이지의 캠핑장 목록 출력하기
+	function printPage(page){
+		
+		$("#list").empty();
+		
+		//page가 1이면 보여줘야 할 시작레코드의 인덱스 0 마지막 인덱스 9
+		//		2이면 						10				19
+		
+		var start = (page-1)*pageSize;
+					
+		var end = start + pageSize - 1;
+		
+		console.log("시작페이지",start);
+		console.log("마지막페이지",end);
+		//console.log(arr.length);
+		
+		//캠핑장 목록 출력하기
+		
+		for(var i=start; i<=end; i++){
+			var row = arr[i];
+			var name = row['야영(캠핑)장명'];
+			var addr = row['소재지도로명주소'];
+			var lat = row['위도'];
+			var lng = row['경도'];
+			var td1 = $("<td></td>").html(name);
+			var td2 = $("<td></td>").html(addr);
+			var td3 = $("<td></td>").html(lat);
+			var td4 = $("<td></td>").html(lng);
+			var tr = $("<tr></tr>");
+			$(tr).append(td1,td2,td3,td4);
+			$("#list").append(tr);
+		}
+	}
+	
+	
+	
+	//페이지번호 출력하기
+	function printPageNumber(page){
+		
+		//paging에 있는 모든 자식 노드들을 지워줌
+		$("#paging").empty();
+		
+		var startPage = Math.floor((page-1)/pageGroup) * pageGroup + 1;
+		var endPage = startPage + pageGroup -1;
+		//마지막페이지는 전체 페이지를 넘지 않도록 함
+		if(endPage > totalPage){
+			endPage = totalPage;	
+		}
+		
+		if(startPage > 1){
+			var span = $("<span></span>").html("[이전]");
+			$(span).attr("page",startPage-1);
+			$("#paging").append(span);	
+		}
+		//페이지번호 출력하기	
+		for(var i=startPage; i<=endPage; i++){
+			var span = $("<span></span>").html(i);
+			$(span).attr("page",i);
+			$("#paging").append(span);
+		}
+		if(endPage < totalPage){
+			var span = $("<span></span>").html("[다음]");
+			$(span).attr("page",endPage+1);
+			$("#paging").append(span);
+		}
+	}
+	
+	//페이지번호를 담고 있는 span태그가 눌러졌을때의 처리
+	$(document).on("click","span",function(){
+		var page = $(this).attr("page");
+		printPageNumber(page);
+		printPage(Page);
+	});
+});
+</script>
+</head>
+<body>
+	<div id="paging"></div>
+	<table>
+		<thead>
+			<tr>
+				<th>캠핑장이름</th>
+				<th>주소</th>
+				<th>위도</th>
+				<th>경도</th>
+			</tr>
+		</thead>
+		<tbody id="list">
+		</tbody>
+	</table>
+</body>
+</html>
