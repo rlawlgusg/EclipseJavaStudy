@@ -1,0 +1,78 @@
+@charset "EUC-KR";
+
+body{
+	font-family: "¸¼Àº °íµñ", "°íµñ", "±¼¸²"
+}
+
+header{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #069;
+	padding: 10px;
+	overflow: hidden; 
+}
+
+header nav{
+	width: 60%;
+	float: right;
+}
+
+nav ul{
+	list-style: none;
+}
+nav ul li{
+	display: inline;
+	margin:15px;
+}
+nav ul li a{
+	color: white;
+	text-decoration: none;
+}
+p {
+	font-size: 15px;
+	line-height: 20px;
+}
+
+article{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 5px solid #333;
+	padding: 5px;
+	overflow: hidden;
+}
+
+article section{
+	width: 30%;
+	height: 650px;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	border: 1px dotted #333;	
+}
+section h3{
+	background: url("../images/bg-note.png") no-repeat left center;
+	padding-left: 30px;
+}
+aside{
+	clear: both;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	padding: 10px;
+	background-color: #99cc33;
+	color: white;
+	text-align: center;
+}
+footer{
+	clear: both;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+	background-color: #333;
+	color: white;
+	text-align: center;
+}

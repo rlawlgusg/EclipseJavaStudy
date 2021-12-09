@@ -1,0 +1,109 @@
+@charset "EUC-KR";
+body{
+	font-family: "¸¼Àº °íµñ","°íµñ","±¼¸²";	
+}
+
+#wrap{
+	width: 800px;
+	margin: 0 auto;
+}
+
+header{
+	width: 100%;
+	height: 150px;
+	/*
+	background-color: #f46070;
+	background-image: url("../images/nav2.png");
+	background-repeat: no-repeat;
+	background-position: right;
+	*/
+	background: #f46070 url("../images/nav2.png") no-repeat right center;
+}
+
+header nav{
+	float: left;
+	width: 70%;
+	margin-top: 50px;
+}
+
+nav ul{
+	list-style: none;
+}
+nav ul li{
+	display: inline;
+	float: left;
+	font-weight: bold;
+	margin: 15px;
+}
+nav ul li a{
+	color: white;
+	text-decoration: none;
+}
+
+footer p{
+	padding: 20px;
+}
+
+h2 {
+	font-size: 1.5em;
+}
+h3 {
+	font-size: 1.0em;
+}
+p {
+	line-height: 20px;
+	font-size: 12px;
+}
+section{
+	float: left;
+	width: 580px;
+	padding: 5px;
+}
+
+section article{
+	float: left;
+	width: 250px;
+	height: 220px;
+	margin: 5px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+aside{
+	float: right;
+	width: 200px;
+	height: auto;
+	margin-top: 80px;
+	border: 1px solid darkgreen;
+	text-align: center;
+}
+
+footer{
+	clear: both;
+	width: 800px;
+	margin-bottom: 0px;
+	background-color: #333;
+	color: white;
+	text-align: center;
+}
+
+#at1:hover{
+	background-color: #cf9;
+	border: 1px solid green;
+}
+#at2:hover{
+	background-color: #a2d0ff;
+	border: 1px solid blue;
+}
+#at3:hover{
+	background-color: #ebcbfe;
+	border: 1px solid purple;
+}
+#at4:hover{
+	background-color: #fc3;
+	border: 1px solid red;
+}
+
+#at1,#at2,#at3,#at4{
+	transition:2s;
+}

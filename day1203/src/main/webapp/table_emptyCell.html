@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	table{
+		margin: 50px;
+		width: 60%;
+	}
+	
+	#table1{
+		border: 1px solid black;
+		width: 60%;
+		
+	}
+	#table2{
+		width: 60%;
+		
+	}
+	
+	td{
+		border: 1px dotted black;
+		padding: 10px;
+		text-align: center;
+	}
+	
+	#table1 td{
+		empty-cells: show;
+	}
+	#table2 td, #table3 td{
+		empty-cells: hide;
+	}
+	
+</style>
+</head>
+<body>
+	<table id="table1">
+		<caption>프로축구 경기일정</caption>
+		<tr>
+			<td>울산</td>
+			<td>울산 VS 인천</td>
+			<td>TV 중계</td>
+		</tr>
+		<tr>
+			<td>부산</td>
+			<td>부산 VS 대전</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>서울</td>
+			<td>서울 VS 강원</td>
+			<td></td>
+		</tr>
+	</table>
+	<table id="table2">
+		<caption>프로축구 경기일정</caption>
+		<tr>
+			<td>울산</td>
+			<td>울산 VS 인천</td>
+			<td>TV 중계</td>
+		</tr>
+		<tr>
+			<td>부산</td>
+			<td>부산 VS 대전</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>서울</td>
+			<td>서울 VS 강원</td>
+			<td></td>
+		</tr>
+	</table>
+	<table id="table3">
+		<caption>프로축구 경기일정</caption>
+		<tr>
+			<td>울산</td>
+			<td>울산 VS 인천</td>
+			<td>TV 중계</td>
+		</tr>
+		<tr>
+			<td>부산</td>
+			<td>부산 VS 대전</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>서울</td>
+			<td>서울 VS 강원</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+</body>
+</html>
