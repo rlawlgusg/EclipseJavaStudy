@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	#container{
+		width:500px;
+		height:300px;
+		margin: 0 auto;
+		border: 2px solid black;
+		display: flex;
+		
+	}
+	#container div{
+		width: 200px;
+		border: 2px solid black;
+		background: #ccc;
+	}
+	h2 {
+		font-size: 20px;
+		font-weight: bold;
+		padding: 20px;
+	}
+	#box3{
+		order: 1;
+	}
+	#box1{
+		order: 2
+	}
+	#box2{
+		order: 3
+	}
+</style>
+</head>
+<body>
+	<div id="container">
+		<div id="box1"> <h2>1</h2> </div>
+		<div id="box2"> <h2>2</h2> </div>
+		<div id="box3"> <h2>3</h2> </div>
+	</div>
+</body>
+</html>
