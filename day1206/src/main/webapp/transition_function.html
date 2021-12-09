@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	#wrap div {
+		float: left;
+		width: 100px;
+		height: 50px;
+		margin: 5px 10px;
+		padding: 5px;
+		color: white;
+		background-color: #006aff;
+		border-radius: 5px;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	#wrap:hover div{
+		height: 400px;
+	}
+	
+	#wrap .linear{
+		transition:3s linear;
+	}
+	#wrap .ease{
+		transition:3s ease;
+	}
+	#wrap .ease-in{
+		transition:3s ease-in;
+	}
+	#wrap .ease-out{
+		transition:3s ease-out;
+	}
+	#wrap .ease-in-out{
+		transition:3s ease-in-out;
+	}
+</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="ease">ease</div>
+		<div class="linear">linear</div>
+		<div class="ease-in">ease-in</div>
+		<div class="ease-out">ease-out</div>
+		<div class="ease-in-out">ease-in-out</div>
+	</div>
+</body>
+</html>

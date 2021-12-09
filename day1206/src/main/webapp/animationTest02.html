@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	div{
+		width: 100px;
+		height: 100px;
+		background-color: blue;
+		animation-duration:3s;
+		float: left;
+		margin: 50px;
+	}
+	
+	#box1{
+		animation-name:shape;
+	}
+	#box2{
+		animation-name:rotate;
+	}
+		
+	@keyframes shape{
+		from{
+			border:1px solid black;
+		}	
+		to{
+			border:1px solid black;
+			border-radius: 50%;
+		}
+	}
+	@keyframes rotate{
+		from{
+			transform:rotate(0deg);
+		}	
+		to{
+			transform:rotate(45deg);
+		}
+	}
+</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+</html>

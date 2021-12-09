@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	h1 {
+		font: 60px;
+	}
+	div {
+		width: 200px;
+		height: 200px;
+	}
+	.container{
+		border: 1px solid black;
+		perspective:300px;
+		margin-top: 100px;
+		margin-left:100px;
+		float: left;
+	}
+	.box{
+		background: #82cbd8;
+		transform:rotateY(135deg);
+	}
+	#back1{
+		backface-visibility:hidden;
+	}
+	#back2{
+		backface-visibility:visible
+	}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box" id="back1">
+			<h1>BACK</h1>
+		</div>	
+	</div>
+	<div class="container">
+		<div class="box" id="back2">
+			<h1>BACK</h1>
+		</div>	
+	</div>
+</body>
+</html>

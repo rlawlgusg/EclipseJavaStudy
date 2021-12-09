@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<style type="text/css">
+	.origin{
+		width: 210px;
+		height: 200px;
+		border: solid 1px black;
+		float: left;
+		margin: 56px;
+		perspective:200px;
+	}
+	.rotatex:hover{
+		transform: rotateX(45deg);
+	}
+	.rotatey:hover{
+		transform: rotateY(45deg);
+	}
+	.rotatez:hover{
+		transform: rotateZ(45deg);
+	}
+	.rotatexyz:hover{
+		transform: rotate3D(2.5,1.2,-1.5,45deg);
+	}
+	
+	
+</style>
+</head>
+<body>
+	<div class="origin">
+		<div class="rotatex">
+			<img src="images/fruit.jpg">
+		</div>
+	</div>
+	<div class="origin">
+		<div class="rotatey">
+			<img src="images/fruit.jpg">
+		</div>
+	</div>
+	<div class="origin">
+		<div class="rotatez">
+			<img src="images/fruit.jpg">
+		</div>
+	</div>
+	<div class="origin">
+		<div class="rotatexyz">
+			<img src="images/fruit.jpg">
+		</div>
+	</div>
+	
+</body>
+</html>
