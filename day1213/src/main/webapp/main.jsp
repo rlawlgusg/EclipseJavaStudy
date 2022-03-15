@@ -12,6 +12,6 @@
 	String data = request.getParameter("data");
 %>
 	addr : <%= URLDecoder.decode(data) %>
-	//ㅎㅎㅎㅎㅎㅎㅎ
+	
 </body>
 </html>
